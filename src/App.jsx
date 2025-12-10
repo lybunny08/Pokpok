@@ -1,15 +1,17 @@
-import Home from './pages/Home'
+import Home from './LandingPages/pages/Home'
 import NavBar from './components/Navbar'
 import './App.css'
-import Gallerie from './pages/Gallery'
+import Gallerie from './LandingPages/pages/Gallery'
 
 function App() {
 
   return (
     <>
-      {/* <NavBar /> */}
+      <div className='min-h-screen'>
+        {/* <NavBar /> */}
       <Home />
       {/* <Gallery /> */}
+      </div>
     </>
   )
 }

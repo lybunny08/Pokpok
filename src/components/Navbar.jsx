@@ -74,10 +74,10 @@ function Navbar() {
     <>
       <div
   ref={navbarRef}
-  className={`w-full fixed top-0 z-50 transition-colors duration-300 ${navbarBg}`}
+  className={`w-full fixed top-0 left-0 z-50 transition-colors duration-300 ${navbarBg}`}
 >
   {/* Contenu interne */}
-  <div className="flex justify-between items-center my-[8px] px-[30px] relative">
+  <div className="flex justify-between items-center my-[8px] mx-[30px] px-[8px] relative">
     <p className={`font-medium text-[29px] ${textColor}`}>Elyzette</p>
     <div className={`flex flex-row text-[14px] w-2/3 items-center font-medium justify-between ${textColor}`} style={{ letterSpacing: '0.4px' }}>
       <div className="flex flex-row gap-[24px]">

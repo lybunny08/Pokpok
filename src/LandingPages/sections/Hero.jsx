@@ -1,12 +1,12 @@
-import Bg from '../assets/Bg.jpeg';
-import Pokpok from '../assets/ppk.mp4';
-import HeroVideo from '../components/Video';
-import Bla from '../assets/bla.png'
+import Bg from '../../assets/Bg.jpeg';
+import Pokpok from '../../assets/ppk.mp4';
+import HeroVideo from '../../components/Video';
+import Bla from '../../assets/bla.png'
 
 function Hero() {
 	return (
 		<div
-			className='flex bg-black h-screen px-[30px] relative'
+			className='flex bg-black h-screen mx-[-30px] px-[30px] relative'
 			style={{
 				backgroundImage: `url(${Bla})`,
 				backgroundSize: 'cover',
