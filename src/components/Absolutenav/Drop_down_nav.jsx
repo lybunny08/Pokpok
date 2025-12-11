@@ -3,8 +3,7 @@ import gsap from "gsap";
 import AboutNavBar from "./Aboutnabar";
 import HeritageNavBar from "./Heritagenavbar";
 
-// AbsNav.jsx
-function AbsNav({ activeNav }) {
+function DropDownNav({ activeNav }) {
   const menuRef = useRef(null);
   const tl = useRef(null);
 
@@ -16,7 +15,7 @@ function AbsNav({ activeNav }) {
       tl.current.fromTo(
         menuRef.current,
         { clipPath: "inset(0 0 100% 0)" },   // complètement masqué depuis le haut
-        { clipPath: "inset(0 0 0% 0)", duration: 0.3, ease: "power4.out" } // révélé
+        { clipPath: "inset(0 0 0% 0)", duration: 0.4, ease: "power4.out" } // révélé
       );
     }
 
@@ -31,7 +30,7 @@ function AbsNav({ activeNav }) {
     <div
       ref={menuRef}
       style={{ clipPath: "inset(0 0 100% 0)" }}
-      className="bg-white w-full shadow-xl pt-[20px] pb-[8px] px-[30px] "
+      className="bg-white w-full shadow-xl pt-[24px] pb-[16px] px-[30px] "
     >
       {activeNav === "about" && <AboutNavBar />}
       {activeNav === "heritage" && <HeritageNavBar />}
@@ -40,4 +39,4 @@ function AbsNav({ activeNav }) {
 }
 
 
-export default AbsNav;
+export default DropDownNav;

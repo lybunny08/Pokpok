@@ -7,7 +7,6 @@ import Footer from "../sections/Footer"
 function Home() {
 	return (
 		<div className="px-[30px] pb-[80px] flex flex-col gap-[80px] ">
-			<Navbar />
 			<Hero />
 			<Intro />
 			<Products />

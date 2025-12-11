@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import AbsNav from './Absolutenav/Absnav';
+import DropDownNav from './Absolutenav/Drop_down_nav';
 import gsap from 'gsap';
 
 function Navbar() {
@@ -73,51 +73,55 @@ function Navbar() {
   return (
     <>
       <div
-  ref={navbarRef}
-  className={`w-full fixed top-0 left-0 z-50 transition-colors duration-300 ${navbarBg}`}
->
-  {/* Contenu interne */}
-  <div className="flex justify-between items-center my-[8px] mx-[30px] px-[8px] relative">
-    <p className={`font-medium text-[29px] ${textColor}`}>Elyzette</p>
-    <div className={`flex flex-row text-[14px] w-2/3 items-center font-medium justify-between ${textColor}`} style={{ letterSpacing: '0.4px' }}>
-      <div className="flex flex-row gap-[24px]">
-        <p onMouseEnter={() => setActiveNav(null)} className="cursor-pointer nav-item-underline">Produits</p>
-        <p
-          onMouseEnter={() => handleMouseEnter('about')}
-          className={`cursor-pointer nav-item-underline ${activeNav === 'about' ? 'text-black' : textColor}`}
-        >
-          A propos
-        </p>
-        <p
-          onMouseEnter={() => handleMouseEnter('heritage')}
-          className={`cursor-pointer nav-item-underline ${activeNav === 'heritage' ? 'text-black' : textColor}`}
-        >
-          Heritage
-        </p>
-        <p onMouseEnter={() => setActiveNav(null)} className="cursor-pointer nav-item-underline">Gallerie</p>
-        <p onMouseEnter={() => setActiveNav(null)} className="cursor-pointer nav-item-underline">Journale</p>
-      </div>
-      <div className="flex flex-row gap-[24px]">
-        <p className="cursor-pointer nav-item-underline">Recherche</p>
-        <p className="cursor-pointer nav-item-underline">Compte</p>
-        <p className="cursor-pointer nav-item-underline">Panier (0)</p>
-      </div>
-    </div>
-
-    {/* Dropdown attaché directement ici */}
-    {showNav && activeNav && (
-      <div
-        ref={dropdownRef}
-        className="absolute left-0 w-full z-40"
-        style={{ top: "100%" }} // ⬅️ sous le navbar
+        ref={navbarRef}
+        className={`w-full fixed top-0 left-0 z-50 transition-colors duration-300 ${navbarBg}`}
       >
-        <AbsNav activeNav={activeNav} />
+        {/* Contenu interne avec padding */}
+        <div className="flex justify-between items-center my-[8px] mx-[30px] px-[8px] relative">
+          <p className={`font-medium text-[29px] ${textColor}`}>Elyzette</p>
+          <div className={`flex flex-row text-[14px] w-2/3 items-center font-medium justify-between ${textColor}`} style={{ letterSpacing: '0.4px' }}>
+            <div className="flex flex-row gap-[24px]">
+              <p onMouseEnter={() => setActiveNav(null)} className="cursor-pointer nav-item-underline">Produits</p>
+              <p
+                onMouseEnter={() => handleMouseEnter('about')}
+                className={`cursor-pointer nav-item-underline ${activeNav === 'about' ? 'text-black' : textColor}`}
+              >
+                A propos
+              </p>
+              <p
+                onMouseEnter={() => handleMouseEnter('heritage')}
+                className={`cursor-pointer nav-item-underline ${activeNav === 'heritage' ? 'text-black' : textColor}`}
+              >
+                Heritage
+              </p>
+              <p onMouseEnter={() => setActiveNav(null)} className="cursor-pointer nav-item-underline">Gallerie</p>
+              <p onMouseEnter={() => setActiveNav(null)} className="cursor-pointer nav-item-underline">Journale</p>
+            </div>
+            <div className="flex flex-row gap-[24px]">
+              <p className="cursor-pointer nav-item-underline">Recherche</p>
+              <p className="cursor-pointer nav-item-underline">Compte</p>
+              <p className="cursor-pointer nav-item-underline">Panier (0)</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Dropdown en position absolue, en dehors du conteneur avec padding */}
+        {showNav && activeNav && (
+          <div
+            ref={dropdownRef}
+            className="absolute left-0 w-full z-40"
+            style={{ top: "100%" }}
+          >
+            <DropDownNav activeNav={activeNav} />
+          </div>
+        )}
       </div>
-    )}
-  </div>
-</div>
 
-
+      {/* Overlay pour le fond */}
+      <div
+        ref={overlayRef}
+        className="fixed inset-0 bg-black/20 z-40 pointer-events-none opacity-0"
+      />
     </>
   );
 }
