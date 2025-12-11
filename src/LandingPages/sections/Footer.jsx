@@ -1,4 +1,5 @@
 import React from 'react';
+import Newsletters from '../../components/NewsLetters';
 
 function Footer() {
   return (
@@ -7,14 +8,14 @@ function Footer() {
         <span>Follows us</span>
         <span className='text-[24px] '>@Pokpok</span>
       </div>
-      <div className='grid grid-cols-6 gap-[16px] '>
-        <div className='h-[100px] w-full rounded-sm bg-[#bababa] '></div>
-				<div className='h-[100px] w-full rounded-sm bg-[#bababa] '></div>
-				<div className='h-[100px] w-full rounded-sm bg-[#bababa] '></div>
-        <div className='h-[100px] w-full rounded-sm bg-[#bababa] '></div>
-				<div className='h-[100px] w-full rounded-sm bg-[#bababa] '></div>
-				<div className='h-[100px] w-full rounded-sm bg-[#bababa] '></div>
+      <div className='grid grid-cols-5 gap-[16px] '>
+        <div className='h-[180px] w-full rounded-sm bg-[#bababa] '></div>
+				<div className='h-[180px] w-full rounded-sm bg-[#bababa] '></div>
+				<div className='h-[180px] w-full rounded-sm bg-[#bababa] '></div>
+        <div className='h-[180px] w-full rounded-sm bg-[#bababa] '></div>
+				<div className='h-[180px] w-full rounded-sm bg-[#bababa] '></div>
       </div>
+      <Newsletters />
     </div>
   );
 }

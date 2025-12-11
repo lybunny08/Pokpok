@@ -129,3 +129,65 @@
   user-select: none;
 }
 
+/* --- Styles pour l'Input Similaire à l'Image --- */
+
+.input-container {
+  /* Dimensions et positionnement du bloc principal */
+  width: 100%;
+  max-width: 400px; /* Ajustez selon votre besoin */
+  height: 100px;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  position: relative; /* Pour positionner la flèche */
+
+  /* ARRIÈRE-PLAN : C'est la clé pour l'effet mouillé/peau */
+  background-image: url('URL_DE_VOTRE_IMAGE_DE_FOND_MOUILLÉE.png'); /* REMPLACEZ CECI */
+  background-size: cover;
+  background-position: center;
+  
+  /* Une petite ombre pour un effet de profondeur si nécessaire, mais non visible sur l'image */
+  /* box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); */
+}
+
+.email-input {
+  /* Réinitialisation et suppression des styles par défaut */
+  border: none; /* Supprime toutes les bordures */
+  outline: none; /* Supprime le contour lors du focus */
+  background: transparent; /* Rend l'arrière-plan de l'input transparent pour voir la div parente */
+  width: 100%; /* Prend presque toute la largeur */
+  font-size: 1.5rem; /* Taille de la police pour correspondre à l'exemple */
+  padding: 5px 0;
+  
+  /* COULEUR DE LA POLICE ET EFFET DE TEXTE CLAIR */
+  color: rgba(0, 0, 0, 0.9); /* Texte blanc/très clair, légèrement transparent */
+  font-weight: 300; /* Police fine */
+  
+  /* La ligne de soulignement */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4); /* Ligne blanche fine et semi-transparente */
+}
+
+/* Style de la flèche de soumission */
+.submit-arrow {
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 2rem;
+  margin-left: 10px;
+  cursor: pointer;
+  /* Optionnel : pour aligner l'input avec la flèche */
+  align-self: flex-end; 
+  padding-bottom: 5px;
+}
+
+/* Gérer le texte d'exemple (placeholder) */
+.email-input::placeholder {
+  color: inherit; /* Utilise la même couleur que le texte tapé */
+  opacity: 1; /* S'assure qu'il n'est pas trop transparent */
+}
+
+/* État de focus (lorsque l'utilisateur clique sur le champ) */
+.email-input:focus {
+  /* Vous pouvez rendre la bordure ou le texte plus net si vous voulez */
+  border-bottom-color: rgba(255, 255, 0, 0.6); 
+  color: rgba(0, 0, 0, 1);
+}
+
