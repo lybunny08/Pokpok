@@ -11,7 +11,7 @@ function Home() {
 	return (
 		<div className="px-[30px] pb-[20px] flex flex-col gap-[90px] ">
 			<Hero />
-			<Intro />
+			{/* <Intro /> */}
 			<Products />
 			<CategorySection />
 			<NewProduct></NewProduct>

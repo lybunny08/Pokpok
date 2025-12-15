@@ -1,14 +1,10 @@
-import Bg from '../../assets/Bg.jpeg';
-import Pokpok from '../../assets/ppk.mp4';
-import HeroVideo from '../../components/Video';
-import Bla from '../../assets/bla.png'
-
+import Herobg from '../../assets/herobg1.png'
 function Hero() {
 	return (
 		<div
 			className='flex bg-black h-screen mx-[-30px] px-[30px] relative'
 			style={{
-				backgroundImage: `url(${Bla})`,
+				backgroundImage: `url(${Herobg})`,
 				backgroundSize: 'cover',
 				backgroundPosition: 'center',
 				backgroundRepeat: 'no-repeat',
@@ -28,9 +24,12 @@ function Hero() {
 			></div>
 			<div className='flex flex-row w-full justify-between items-end py-[24px] relative z-20'>
 				<div className='flex flex-col gap-[24px] items-start'>
-					<h1 className='font-playfair text-[30px] leading-[34px] w-[520px] whitef5 ' style={{ letterSpacing: '0.4px' }}>
-						L'élégance prend racine dans l'artisanat. <br />Découvrez des pièces uniques, façonnées à la main au cœur de Madagascar.
-					</h1>
+					<div className='space-y-2'>
+						<span className='text-white'>Mosturezed & Protect</span>
+						<h1 className='font-playfair text-[30px] leading-[34px] w-[520px] whitef5 ' style={{ letterSpacing: '0.4px' }}>
+							Introduction the <br /> new Body Lotion
+						</h1>
+					</div>
 					<button className='bg-white gap-[16px] py-[5px] pl-[24px] pr-[5px]'>
 						<span className='text-[14px] text-black' style={{ letterSpacing: '0.4px' }}>Découvrir la collection </span>
 						<div className='w-[42px] h-[42px] flex items-center justify-center rounded-full bg-black '>

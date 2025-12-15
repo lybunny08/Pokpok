@@ -156,20 +156,20 @@
   outline: none; /* Supprime le contour lors du focus */
   background: transparent; /* Rend l'arrière-plan de l'input transparent pour voir la div parente */
   width: 100%; /* Prend presque toute la largeur */
-  font-size: 1.5rem; /* Taille de la police pour correspondre à l'exemple */
+  font-size: 1rem; /* Taille de la police pour correspondre à l'exemple */
   padding: 5px 0;
   
   /* COULEUR DE LA POLICE ET EFFET DE TEXTE CLAIR */
-  color: rgba(0, 0, 0, 0.9); /* Texte blanc/très clair, légèrement transparent */
+  color: rgba(255, 255, 255, 0.9); /* Texte blanc/très clair, légèrement transparent */
   font-weight: 300; /* Police fine */
   
   /* La ligne de soulignement */
-  border-bottom: 1px solid rgba(0, 0, 0, 0.4); /* Ligne blanche fine et semi-transparente */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4); /* Ligne blanche fine et semi-transparente */
 }
 
 /* Style de la flèche de soumission */
 .submit-arrow {
-  color: rgba(0, 0, 0, 0.4);
+  color: rgba(255, 255, 255, 0.4);
   font-size: 2rem;
   margin-left: 10px;
   cursor: pointer;
@@ -187,7 +187,7 @@
 /* État de focus (lorsque l'utilisateur clique sur le champ) */
 .email-input:focus {
   /* Vous pouvez rendre la bordure ou le texte plus net si vous voulez */
-  border-bottom-color: rgba(255, 255, 0, 0.6); 
-  color: rgba(0, 0, 0, 1);
+  border-bottom-color: rgba(255, 255, 255, 0.6); 
+  color: rgba(255, 255, 255, 1);
 }
 

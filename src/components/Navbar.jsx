@@ -78,7 +78,7 @@ function Navbar() {
       >
         {/* Contenu interne avec padding */}
         <div className="flex justify-between items-center my-[8px] mx-[30px] px-[8px] relative">
-          <p className={`font-medium text-[29px] ${textColor}`}>Pokpok</p>
+          <p className={`font-medium text-[29px] ${textColor}`}>Elyanne</p>
           <div className={`flex flex-row text-[14px] w-2/3 items-center font-medium justify-between ${textColor}`} style={{ letterSpacing: '0.4px' }}>
             <div className="flex flex-row gap-[24px]">
               <p onMouseEnter={() => setActiveNav(null)} className="cursor-pointer nav-item-underline">Produits</p>
