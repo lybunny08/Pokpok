@@ -14,7 +14,7 @@ function AboutNavBar() {
             opacity: 0,
             y: -10,
             rotationX: -10,
-            scale: 0.95,
+            scale: 0.97,
           },
           {
             opacity: 1,
@@ -45,9 +45,7 @@ function AboutNavBar() {
           ref={el => itemsRef.current[index] = el}
           className='flex flex-col gap-[8px] cursor-pointer group opacity-0' // Initial hidden
         >
-          <div className='w-full h-[180px] rounded-lg bg-black/40 
-                         group-hover:opacity-80 transition-all duration-300 
-                         group-hover:scale-105'></div>
+          <div className='w-full h-[180px] rounded-lg bg-black/40'></div>
           <p className='text-black group-hover:text-gray-700 transition-colors duration-300'>
             {item.title}
           </p>

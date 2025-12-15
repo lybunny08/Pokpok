@@ -6,11 +6,12 @@ import Gallerie from './LandingPages/pages/Gallery'
 function App() {
 
   return (
-    <>
+    <div className='overflow-hidden'>
+      <>
         <NavBar />
         <Home />
-      {/* <Gallery /> */}
-    </>
+      </>
+    </div>
   )
 }
 
