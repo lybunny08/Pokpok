@@ -1,6 +1,6 @@
 import React from 'react';
 import journal1 from '../../assets/journal1.avif'
-import journal2 from '../../assets/journal2.avif'
+import journal2 from '../../assets/journal2.png'
 import journal3 from '../../assets/journal3.avif'
 
 function Journale() {
