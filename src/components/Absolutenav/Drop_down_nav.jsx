@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import AboutNavBar from "./Aboutnabar";
-import HeritageNavBar from "./Heritagenavbar";
+import ProductsNavBar from "./Products_navbar";
 
 function DropDownNav({ activeNav }) {
   const menuRef = useRef(null);
@@ -33,7 +33,7 @@ function DropDownNav({ activeNav }) {
       className="bg-white w-full shadow-xl pt-[24px] pb-[16px] px-[30px] "
     >
       {activeNav === "about" && <AboutNavBar />}
-      {activeNav === "heritage" && <HeritageNavBar />}
+      {activeNav === "products" && <ProductsNavBar />}
     </div>
   );
 }

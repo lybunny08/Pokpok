@@ -81,26 +81,26 @@ function Navbar() {
           <p className={`font-medium text-[29px] ${textColor}`}>Elyanne</p>
           <div className={`flex flex-row text-[14px] w-2/3 items-center font-medium justify-between ${textColor}`} style={{ letterSpacing: '0.4px' }}>
             <div className="flex flex-row gap-[24px]">
-              <p onMouseEnter={() => setActiveNav(null)} className="cursor-pointer nav-item-underline">Produits</p>
-              <p
+              <a
+                onMouseEnter={() => handleMouseEnter('products')}
+                className={`cursor-pointer nav-item-underline ${activeNav === 'products' ? 'text-black' : textColor}`}
+              >
+                Products
+              </a>
+              <a
                 onMouseEnter={() => handleMouseEnter('about')}
                 className={`cursor-pointer nav-item-underline ${activeNav === 'about' ? 'text-black' : textColor}`}
               >
-                A propos
-              </p>
-              <p
-                onMouseEnter={() => handleMouseEnter('heritage')}
-                className={`cursor-pointer nav-item-underline ${activeNav === 'heritage' ? 'text-black' : textColor}`}
-              >
-                Heritage
-              </p>
-              <p onMouseEnter={() => setActiveNav(null)} className="cursor-pointer nav-item-underline">Gallerie</p>
-              <p onMouseEnter={() => setActiveNav(null)} className="cursor-pointer nav-item-underline">Journale</p>
+                About
+              </a>
+              <a onMouseEnter={() => setActiveNav(null)} className="cursor-pointer nav-item-underline">Gallery</a>
+              <a onMouseEnter={() => setActiveNav(null)} className="cursor-pointer nav-item-underline">Journal</a>
+              <a onMouseEnter={() => setActiveNav(null)} className="cursor-pointer nav-item-underline">FAQ</a>
             </div>
             <div className="flex flex-row gap-[24px]">
-              <p className="cursor-pointer nav-item-underline">Recherche</p>
-              <p className="cursor-pointer nav-item-underline">Compte</p>
-              <p className="cursor-pointer nav-item-underline">Panier (0)</p>
+              <p className="cursor-pointer nav-item-underline">Search</p>
+              <p className="cursor-pointer nav-item-underline">Account</p>
+              <p className="cursor-pointer nav-item-underline">Bag (0)</p>
             </div>
           </div>
         </div>
