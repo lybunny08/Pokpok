@@ -7,6 +7,7 @@ function Navbar() {
   const [activeNav, setActiveNav] = useState(null);
   const [showSearch, setShowSearch] = useState(false);
   const [isTop, setIsTop] = useState(true);
+  const [hoveredNavItem, setHoveredNavItem] = useState(null);
   const dropdownOverlayRef = useRef(null);
   const searchOverlayRef = useRef(null);
   const dropdownRef = useRef(null);
@@ -31,25 +32,36 @@ function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // 👉 Ouvrir/fermer la recherche
-  const handleSearchClick = () => {
-    const newShowSearch = !showSearch;
-    setShowSearch(newShowSearch);
-    setActiveNav(null); // Fermer le dropdown si ouvert
+  // 👉 Définir quels liens ont des dropdowns
+  const hasDropdown = (navType) => {
+    return ['products', 'about'].includes(navType);
   };
 
-  // 👉 Hover sur un item qui a dropdown
-  const handleMouseEnter = (navType) => {
-    console.log('Opening dropdown:', navType); // Debug
-    setActiveNav(navType);
-    setShowSearch(false); // Fermer la recherche si ouverte
+  // 👉 Gestion du hover sur les liens
+  const handleNavItemHover = (navType) => {
+    setHoveredNavItem(navType);
+    
+    if (hasDropdown(navType)) {
+      // Si c'est un lien avec dropdown, l'ouvrir
+      setActiveNav(navType);
+      setShowSearch(false);
+    } else {
+      // Si c'est un lien sans dropdown, fermer le dropdown
+      setActiveNav(null);
+    }
+  };
+
+  // 👉 Ouvrir/fermer la recherche
+  const handleSearchClick = () => {
+    setShowSearch(!showSearch);
+    setActiveNav(null);
+    setHoveredNavItem(null);
   };
 
   // 👉 Animation pour l'overlay du dropdown
   useEffect(() => {
     if (dropdownOverlayRef.current) {
       if (activeNav) {
-        console.log('Showing dropdown overlay'); // Debug
         gsap.to(dropdownOverlayRef.current, {
           opacity: 1,
           pointerEvents: 'auto',
@@ -129,21 +141,39 @@ function Navbar() {
           <p className={`font-medium text-[29px] ${textColor}`}>Elyanne</p>
           <div className={`flex flex-row text-[14px] w-2/3 items-center font-medium justify-between ${textColor}`} style={{ letterSpacing: '0.4px' }}>
             <div className="flex flex-row gap-[24px]">
+              {/* Liens avec dropdown */}
               <a
-                onMouseEnter={() => handleMouseEnter('products')}
+                onMouseEnter={() => handleNavItemHover('products')}
                 className={`cursor-pointer nav-item-underline ${activeNav === 'products' ? 'text-black' : textColor}`}
               >
                 Products
               </a>
               <a
-                onMouseEnter={() => handleMouseEnter('about')}
+                onMouseEnter={() => handleNavItemHover('about')}
                 className={`cursor-pointer nav-item-underline ${activeNav === 'about' ? 'text-black' : textColor}`}
               >
                 About
               </a>
-              <a className="cursor-pointer nav-item-underline">Gallery</a>
-              <a className="cursor-pointer nav-item-underline">Journal</a>
-              <a className="cursor-pointer nav-item-underline">FAQ</a>
+              
+              {/* Liens SANS dropdown */}
+              <a 
+                onMouseEnter={() => handleNavItemHover('gallery')}
+                className="cursor-pointer nav-item-underline"
+              >
+                Gallery
+              </a>
+              <a 
+                onMouseEnter={() => handleNavItemHover('journal')}
+                className="cursor-pointer nav-item-underline"
+              >
+                Journal
+              </a>
+              <a 
+                onMouseEnter={() => handleNavItemHover('faq')}
+                className="cursor-pointer nav-item-underline"
+              >
+                FAQ
+              </a>
             </div>
             <div className="flex flex-row gap-[24px]">
               <p 
@@ -159,8 +189,8 @@ function Navbar() {
           </div>
         </div>
 
-        {/* Dropdown - z-index: 101 (juste au-dessus du navbar) */}
-        {activeNav && (
+        {/* Dropdown - seulement pour 'products' et 'about' */}
+        {activeNav && hasDropdown(activeNav) && (
           <div
             ref={dropdownRef}
             className="absolute left-0 w-full z-[101]"
@@ -173,21 +203,21 @@ function Navbar() {
         )}
       </div>
 
-      {/* Overlay pour le Dropdown - z-index: 99 (en dessous du navbar) */}
+      {/* Overlay pour le Dropdown - z-index: 99 */}
       <div
         ref={dropdownOverlayRef}
         className="fixed inset-0 bg-black/30 z-[99] pointer-events-none opacity-0"
         onClick={() => setActiveNav(null)}
       />
 
-      {/* Overlay pour la Recherche - z-index: 150 (AU-DESSUS du navbar) */}
+      {/* Overlay pour la Recherche - z-index: 150 */}
       <div
         ref={searchOverlayRef}
         className="fixed inset-0 bg-black/30 z-[150] pointer-events-none opacity-0"
         onClick={handleSearchClick}
       />
 
-      {/* Composant Search - z-index: 151 (au-dessus de l'overlay) */}
+      {/* Composant Search - z-index: 151 */}
       <div 
         ref={searchRef}
         className="fixed top-0 right-0 h-full z-[151]"
