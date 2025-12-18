@@ -4,7 +4,7 @@ import red from '../../assets/products/red.png';
 import bleu from '../../assets/products/blue.png';
 import grey from '../../assets/products/grey.png';
 
-// Tableau de données des produits
+// Tableau de données des produits fictif
 const productsData = [
   {
     id: 1,
