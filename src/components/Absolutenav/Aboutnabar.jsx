@@ -46,7 +46,7 @@ function AboutNavBar() {
           className='flex flex-col gap-[8px] cursor-pointer group opacity-0' // Initial hidden
         >
           <div className='w-full h-[240px] rounded-lg bg-black/40'></div>
-          <p className='text-black group-hover:text-gray-700 transition-colors duration-300'>
+          <p className='text-black text-[14px] font-medium '>
             {item.title}
           </p>
         </div>

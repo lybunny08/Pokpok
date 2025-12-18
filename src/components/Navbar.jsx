@@ -99,6 +99,7 @@ function Navbar() {
             </div>
             <div className="flex flex-row gap-[24px]">
               <p className="cursor-pointer nav-item-underline">Search</p>
+              <p className="cursor-pointer nav-item-underline">Favorites</p>
               <p className="cursor-pointer nav-item-underline">Account</p>
               <p className="cursor-pointer nav-item-underline">Bag (0)</p>
             </div>
@@ -120,7 +121,7 @@ function Navbar() {
       {/* Overlay pour le fond */}
       <div
         ref={overlayRef}
-        className="fixed inset-0 bg-black/20 z-40 pointer-events-none opacity-0"
+        className="fixed inset-0 bg-black/30 z-40 pointer-events-none opacity-0"
       />
     </>
   );

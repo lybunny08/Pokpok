@@ -61,7 +61,7 @@ function ProductsNavBar() {
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
           }}></div>
-          <p className='text-black group-hover:text-gray-700 transition-colors duration-300'>
+          <p className='text-black text-[14px] font-medium'>
             {item.title}
           </p>
         </div>

@@ -1,5 +1,5 @@
 // components/ProductCard.jsx
-import React from 'react';
+import React, { useState } from 'react';
 
 const ProductCard = ({
   imageUrl,
@@ -8,12 +8,20 @@ const ProductCard = ({
   category,
   categoryColor = '#bababa',
   height = '320px',
-  className = ''
+  className = '',
+  initialLiked = false // Nouvelle prop pour l'état initial
 }) => {
+  const [isLiked, setIsLiked] = useState(initialLiked);
+
+  const handleLikeClick = (e) => {
+    e.stopPropagation(); // Empêche le déclenchement du clic sur la carte produit
+    setIsLiked(!isLiked);
+  };
+
   return (
-    <div className={`flex flex-col gap-[8px] ${className}`}>
+    <div className={`flex flex-col gap-[6px] ${className}`}>
       <div
-        className='flex justify-end p-4 w-full rounded-xl bg-cover bg-center bg-no-repeat'
+        className='flex items-start justify-end p-4 w-full rounded-xl bg-cover bg-center bg-no-repeat relative'
         style={{
           backgroundImage: `url(${imageUrl})`,
           backgroundColor: categoryColor,
@@ -21,12 +29,29 @@ const ProductCard = ({
         }}
         aria-hidden="true"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={0.5} stroke="currentColor" className="size-6">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
-        </svg>
+        {/* Bouton like */}
+        <button
+          onClick={handleLikeClick}
+          aria-label={isLiked ? 'Retirer des favoris' : 'Ajouter aux favoris'}
+        >
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            fill={isLiked ? "#A30000" : "none"} 
+            viewBox="0 0 24 24" 
+            strokeWidth={isLiked ? 0 : 0.5} 
+            stroke={isLiked ? "#A30000" : "currentColor"} 
+            className="size-6 transition-all duration-200"
+          >
+            <path 
+              strokeLinecap="round" 
+              strokeLinejoin="round" 
+              d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" 
+            />
+          </svg>
+        </button>
       </div>
-      <span>{productName}</span>
-      <span className='uppercase text-[12px]'>{category}</span>
+      <span className='font-medium text-[14px]'>{productName}</span>
+      <span className='uppercase text-[12px] text-gray-500'>{category}</span>
     </div>
   );
 };
