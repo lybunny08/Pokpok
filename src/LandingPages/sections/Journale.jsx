@@ -1,7 +1,7 @@
 import React from 'react';
-import journal1 from '../../assets/journal1.avif'
+import journal1 from '../../assets/journal1.webp'
 import journal2 from '../../assets/journal2.png'
-import journal3 from '../../assets/journal3.avif'
+import journal3 from '../../assets/journal3.webp'
 
 function Journale() {
   return (
@@ -13,7 +13,7 @@ function Journale() {
 						<img src={journal1} alt="" />
 					</div>
 					<div>Skincare</div>
-					<span>The Transformative Power of Going All Natural</span>
+					<span>The Transformative Power of Going Elyanne</span>
 					<span className='text-[12px] pt-[8px] '>Read more</span>
 				</div>
         <div className='flex flex-col gap-[8px]'>
@@ -21,7 +21,7 @@ function Journale() {
 						<img src={journal2} alt="" />
 					</div>
 					<div>Skincare</div>
-					<span>Simple Steps for an All-Natural Skincare Routine</span>
+					<span>Simple Steps for an Elyanne Skincare Routine</span>
 					<span className='text-[12px] pt-[8px] '>Read more</span>
 				</div>
         <div className='flex flex-col gap-[8px]'>

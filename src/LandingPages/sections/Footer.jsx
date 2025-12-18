@@ -1,28 +1,41 @@
 import React from 'react';
 import Newsletters from '../../components/NewsLetters';
+import body from '../../assets/body.webp'
+import men from '../../assets/men.webp'
+import apply from '../../assets/apply.webp'
+import shower from '../../assets/Wet_portrait.png'
+import women from '../../assets/women.webp'
+
 
 function Footer() {
+  const images = [body, men, apply, shower, women];
+
   return (
     <div className='flex flex-col gap-[32px] '>
       <div className='flex flex-col items-center justify-center '>
-        <span>Suivez nous</span>
-        <span className='text-[24px] '>@Pokpok</span>
+        <span>Follow us</span>
+        <span className='text-[24px] '>@Elyanne</span>
       </div>
+
       <div className='grid grid-cols-5 gap-[16px] '>
-        <div className='h-[180px] w-full rounded-sm bg-[#bababa] '></div>
-				<div className='h-[180px] w-full rounded-sm bg-[#bababa] '></div>
-				<div className='h-[180px] w-full rounded-sm bg-[#bababa] '></div>
-        <div className='h-[180px] w-full rounded-sm bg-[#bababa] '></div>
-				<div className='h-[180px] w-full rounded-sm bg-[#bababa] '></div>
+        {images.map((src, idx) => (
+          <img
+            key={idx}
+            src={src}
+            alt={`gallery-${idx}`}
+            className='h-[220px] w-full rounded-sm object-cover'
+          />
+        ))}
       </div>
+
       <Newsletters />
       <div className='flex flex-row justify-between'>
         <div className='flex flex-col justify-between'>
           <div className='flex flex-col'>
-            <span className=''>Pokpok</span>
+            <span className=''>Elyanne</span>
             <span>The next wave of natural skincare.</span>
           </div>
-          <span>©2025 Pokpok</span>
+          <span>©2025 Elyanne</span>
         </div>
 
         <div className='flex flex-col gap-[80px] '>

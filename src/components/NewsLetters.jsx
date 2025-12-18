@@ -1,5 +1,5 @@
 import React from 'react';
-import newsletter from '../assets/newsletter.avif'
+import newsletter from '../assets/newsletter.webp'
 
 function Newsletters() {
   return (

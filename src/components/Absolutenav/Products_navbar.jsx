@@ -2,8 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import Haircare from '../../assets/Haircare.png'
 import Skincare from '../../assets/Skincare.png'
-import Bodycare from '../../assets/herobg.avif'
-import Kits from '../../assets/Kits.avif'
+import Bodycare from '../../assets/herobg.webp'
+import Kits from '../../assets/Kits.webp'
 
 function ProductsNavBar() {
   const containerRef = useRef(null);
@@ -54,7 +54,7 @@ function ProductsNavBar() {
           }}
           className='flex flex-col gap-[8px] cursor-pointer group opacity-0 '
         >
-          <div className='w-full h-[180px] rounded-lg  overflow-hidden'
+          <div className='w-full h-[240px] rounded-lg  overflow-hidden'
           style={{
             backgroundImage: `url(${item.image})`,
             backgroundSize: 'cover',
