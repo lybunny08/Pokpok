@@ -9,6 +9,7 @@ import Journale from "../sections/Journale";
 import NewProduct from "../sections/New_product";
 import Featured from "../sections/Featured";
 import Information from "../sections/Information";
+import Promotion from "../sections/Promotion";
 function Home() {
 	return (
 		<div className="px-[30px] pb-[20px] flex flex-col gap-[90px] ">
@@ -20,6 +21,7 @@ function Home() {
 			<NewProduct />
 			<Journale />
 			<Information />
+			<Promotion />
 			<Testimonials />
 			<Footer />
 		</div>

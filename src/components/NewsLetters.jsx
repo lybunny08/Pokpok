@@ -4,7 +4,7 @@ import newsletter from '../assets/newsletter.webp'
 function Newsletters() {
   return (
     <div
-      className="flex items-center justify-center w-full h-[80vh] rounded-lg text-white "
+      className="flex items-center justify-center w-full h-[80vh] rounded-xl text-white "
       style={{
         backgroundImage: `url(${newsletter})`,
         backgroundSize: 'cover',
