@@ -15,7 +15,7 @@ function Hero() {
 				className="absolute z-10 inset-0 bg-black"
 				style={{ opacity: 0.4,}}
 			></div>
-			<div className='flex flex-row w-full justify-between items-end py-[24px] relative z-20'>
+			<div className='flex flex-row w-full justify-between items-end py-[40px] relative z-20'>
 				<div className='flex flex-col gap-[24px] items-start'>
 					<div className='space-y-2'>
 						<span className='text-white'>Mosturezed & Protect</span>

@@ -5,14 +5,11 @@ import gsap from 'gsap';
 
 function Navbar() {
   const [activeNav, setActiveNav] = useState(null);
-  const [showNav, setShowNav] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [isTop, setIsTop] = useState(true);
-  const closeTimeoutRef = useRef(null);
-  const overlayRef = useRef(null);
-  const searchOverlayRef = useRef(null); // Nouveau ref pour l'overlay de recherche
+  const dropdownOverlayRef = useRef(null);
+  const searchOverlayRef = useRef(null);
   const dropdownRef = useRef(null);
-  const navbarRef = useRef(null);
   const searchRef = useRef(null);
 
   // 👉 Désactiver le scroll quand la recherche est ouverte
@@ -22,7 +19,6 @@ function Navbar() {
     } else {
       document.body.style.overflow = 'unset';
     }
-    
     return () => {
       document.body.style.overflow = 'unset';
     };
@@ -39,16 +35,42 @@ function Navbar() {
   const handleSearchClick = () => {
     const newShowSearch = !showSearch;
     setShowSearch(newShowSearch);
-    
-    // Fermer le dropdown si ouvert
-    if (activeNav) {
-      setActiveNav(null);
-      setShowNav(false);
-    }
+    setActiveNav(null); // Fermer le dropdown si ouvert
+  };
 
-    // Animer l'overlay de recherche
+  // 👉 Hover sur un item qui a dropdown
+  const handleMouseEnter = (navType) => {
+    console.log('Opening dropdown:', navType); // Debug
+    setActiveNav(navType);
+    setShowSearch(false); // Fermer la recherche si ouverte
+  };
+
+  // 👉 Animation pour l'overlay du dropdown
+  useEffect(() => {
+    if (dropdownOverlayRef.current) {
+      if (activeNav) {
+        console.log('Showing dropdown overlay'); // Debug
+        gsap.to(dropdownOverlayRef.current, {
+          opacity: 1,
+          pointerEvents: 'auto',
+          duration: 0.3,
+          ease: 'power2.out',
+        });
+      } else {
+        gsap.to(dropdownOverlayRef.current, {
+          opacity: 0,
+          pointerEvents: 'none',
+          duration: 0.2,
+          ease: 'power2.in',
+        });
+      }
+    }
+  }, [activeNav]);
+
+  // 👉 Animation pour l'overlay de la recherche
+  useEffect(() => {
     if (searchOverlayRef.current) {
-      if (newShowSearch) {
+      if (showSearch) {
         gsap.to(searchOverlayRef.current, {
           opacity: 1,
           pointerEvents: 'auto',
@@ -64,92 +86,34 @@ function Navbar() {
         });
       }
     }
-  };
+  }, [showSearch]);
 
-  // 👉 Fermer la recherche en cliquant sur l'overlay
-  const handleOverlayClick = (e) => {
-    if (e.target === searchOverlayRef.current) {
-      handleSearchClick();
-    }
-  };
-
-  // 👉 Hover sur un item qui a dropdown
-  const handleMouseEnter = (navType) => {
-    clearTimeout(closeTimeoutRef.current);
-    setActiveNav(navType);
-    setShowNav(true);
-
-    if (overlayRef.current) {
-      gsap.to(overlayRef.current, {
-        opacity: 1,
-        pointerEvents: 'auto',
-        duration: 0.4,
-        ease: 'power2.out',
-      });
-    }
-  };
-
-  // 👉 Animation d'entrée/sortie pour la recherche
+  // 👉 Animation pour la recherche
   useEffect(() => {
     if (searchRef.current) {
       if (showSearch) {
-        // Animation d'entrée de droite à gauche
         gsap.fromTo(
           searchRef.current,
-          {
-            x: 100,
-            opacity: 0,
-          },
-          {
-            x: 0,
-            opacity: 1,
-            duration: 0.3,
+          { x: 100, opacity: 0 },
+          { 
+            x: 0, 
+            opacity: 1, 
+            duration: 0.3, 
             ease: 'power2.out',
+            onStart: () => gsap.set(searchRef.current, { display: 'block' })
           }
         );
       } else {
-        // Animation de sortie de gauche à droite
         gsap.to(searchRef.current, {
           x: 100,
           opacity: 0,
           duration: 0.2,
           ease: 'power2.in',
+          onComplete: () => gsap.set(searchRef.current, { display: 'none' })
         });
       }
     }
   }, [showSearch]);
-
-  // 👉 Fermer si on sort complètement du nav + dropdown
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      if (
-        navbarRef.current &&
-        !navbarRef.current.contains(e.target) &&
-        dropdownRef.current &&
-        !dropdownRef.current.contains(e.target)
-      ) {
-        closeTimeoutRef.current = setTimeout(() => {
-          setActiveNav(null);
-          setShowNav(false);
-          if (overlayRef.current) {
-            gsap.to(overlayRef.current, {
-              opacity: 0,
-              pointerEvents: 'none',
-              duration: 0.2,
-              ease: 'power2.in',
-            });
-          }
-        }, 100);
-      }
-    };
-
-    document.addEventListener('mousemove', handleMouseMove);
-
-    return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      clearTimeout(closeTimeoutRef.current);
-    };
-  }, []);
 
   const hasDropdownOpen = activeNav !== null;
   const navbarBg = isTop && !hasDropdownOpen && !showSearch ? "bg-transparent" : "bg-white";
@@ -157,11 +121,10 @@ function Navbar() {
 
   return (
     <>
+      {/* Navbar - z-index: 100 */}
       <div
-        ref={navbarRef}
-        className={`w-full fixed top-0 left-0 z-30 transition-colors duration-300 ${navbarBg}`}
+        className={`w-full fixed top-0 left-0 z-[100] transition-colors duration-300 ${navbarBg}`}
       >
-        {/* Contenu interne avec padding */}
         <div className="flex justify-between items-center my-[8px] mx-[30px] px-[8px] relative">
           <p className={`font-medium text-[29px] ${textColor}`}>Elyanne</p>
           <div className={`flex flex-row text-[14px] w-2/3 items-center font-medium justify-between ${textColor}`} style={{ letterSpacing: '0.4px' }}>
@@ -178,9 +141,9 @@ function Navbar() {
               >
                 About
               </a>
-              <a onMouseEnter={() => setActiveNav(null)} className="cursor-pointer nav-item-underline">Gallery</a>
-              <a onMouseEnter={() => setActiveNav(null)} className="cursor-pointer nav-item-underline">Journal</a>
-              <a onMouseEnter={() => setActiveNav(null)} className="cursor-pointer nav-item-underline">FAQ</a>
+              <a className="cursor-pointer nav-item-underline">Gallery</a>
+              <a className="cursor-pointer nav-item-underline">Journal</a>
+              <a className="cursor-pointer nav-item-underline">FAQ</a>
             </div>
             <div className="flex flex-row gap-[24px]">
               <p 
@@ -196,40 +159,42 @@ function Navbar() {
           </div>
         </div>
 
-        {/* Dropdown en position absolue */}
-        {showNav && activeNav && (
+        {/* Dropdown - z-index: 101 (juste au-dessus du navbar) */}
+        {activeNav && (
           <div
             ref={dropdownRef}
-            className="absolute left-0 w-full z-40"
+            className="absolute left-0 w-full z-[101]"
             style={{ top: "100%" }}
+            onMouseEnter={() => setActiveNav(activeNav)}
+            onMouseLeave={() => setActiveNav(null)}
           >
             <DropDownNav activeNav={activeNav} />
           </div>
         )}
       </div>
 
-      {/* Overlay pour le dropdown */}
+      {/* Overlay pour le Dropdown - z-index: 99 (en dessous du navbar) */}
       <div
-        ref={overlayRef}
-        className="fixed inset-0 bg-black/30 z-40 pointer-events-none opacity-0"
+        ref={dropdownOverlayRef}
+        className="fixed inset-0 bg-black/30 z-[99] pointer-events-none opacity-0"
+        onClick={() => setActiveNav(null)}
       />
 
-      {/* Overlay pour la recherche (s'ouvre avec la recherche) */}
+      {/* Overlay pour la Recherche - z-index: 150 (AU-DESSUS du navbar) */}
       <div
         ref={searchOverlayRef}
-        className="fixed inset-0 bg-black/30 z-49 pointer-events-none opacity-0"
-        onClick={handleOverlayClick}
+        className="fixed inset-0 bg-black/30 z-[150] pointer-events-none opacity-0"
+        onClick={handleSearchClick}
       />
 
-      {/* Composant Search avec animation */}
-      {showSearch && (
-        <div 
-          ref={searchRef}
-          className="fixed top-0 right-0 h-full z-50"
-        >
-          <SearchComponents onClose={handleSearchClick} />
-        </div>
-      )}
+      {/* Composant Search - z-index: 151 (au-dessus de l'overlay) */}
+      <div 
+        ref={searchRef}
+        className="fixed top-0 right-0 h-full z-[151]"
+        style={{ display: 'none' }}
+      >
+        <SearchComponents onClose={handleSearchClick} />
+      </div>
     </>
   );
 }
