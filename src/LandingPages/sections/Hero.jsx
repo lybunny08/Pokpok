@@ -1,4 +1,5 @@
 import Herobg from '../../assets/herobg1.png'
+import ButtonComponents from '../../components/Common/ButtonComponents';
 function Hero() {
 	return (
 		<div
@@ -22,14 +23,7 @@ function Hero() {
 							Introduction the <br /> new Body Lotion
 						</h1>
 					</div>
-					<button className='bg-white gap-[16px] py-[5px] pl-[24px] pr-[5px]'>
-						<span className='text-[14px] text-black' style={{ letterSpacing: '0.4px' }}>Discover new collection </span>
-						<div className='w-[42px] h-[42px] flex items-center justify-center rounded-full bg-black '>
-							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="white" className="size-4">
-								<path strokeLinecap="round" strokeLinejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" />
-							</svg>
-						</div>
-					</button>
+					<ButtonComponents text="Shop now" />
 				</div>
 			</div>
 		</div>

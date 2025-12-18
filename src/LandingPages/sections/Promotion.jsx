@@ -1,5 +1,6 @@
 import React from 'react';
 import promotion from '../../assets/Promotion.png'
+import ButtonComponents from '../../components/Common/ButtonComponents';
 
 function Promotion() {
   return (
@@ -16,7 +17,7 @@ function Promotion() {
 				<div className='flex flex-col items-start'>
 					<span className='font-bold text-[32px] '>Summer sale</span>
 					<span className='text-[14px] pb-[16px] text-white/50 font-medium '>50% Off Everything for a limited time only</span>
-					<button className='rounded-full px-[42px] py-[8px] border border-white text-center font-medium '>Shop sale</button>
+					<ButtonComponents text="Shop sale" />
 				</div>
 				<span className='text-[32px] font-medium '>Time's Up</span>
 			</div>
