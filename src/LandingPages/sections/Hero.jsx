@@ -18,7 +18,7 @@ function Hero() {
 				<div className='flex flex-col gap-[24px] items-start'>
 					<div className='space-y-2'>
 						<span className='text-white'>Mosturezed & Protect</span>
-						<h1 className='font-playfair text-[46px] leading-[50px] w-[520px] whitef5 ' style={{ letterSpacing: '0.4px' }}>
+						<h1 className='text-[40px] leading-[50px] w-[520px] whitef5 ' style={{ letterSpacing: '0.4px' }}>
 							Introduction the <br /> new Body Lotion
 						</h1>
 					</div>
