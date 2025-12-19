@@ -1,3 +1,4 @@
+@import "tailwindcss";
 :root {
   font-family: system-ui, Inter,sans-serif;
   line-height: 1.5;
@@ -18,16 +19,3 @@ button {
   /* padding: 0.6em 1.2em; */
   cursor: pointer;
 }
-
-/* @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-} */

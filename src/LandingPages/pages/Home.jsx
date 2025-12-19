@@ -10,7 +10,7 @@ import Information from "../components/sections/Information";
 import Promotion from "../components/sections/Promotion";
 function Home() {
 	return (
-		<div className="px-[16px] lg:px-[30px] pb-[20px] flex flex-col gap-[60px] lg:gap-[90px] ">
+		<div className="px-[16px] md:px-[30px] pb-[20px] flex flex-col gap-[60px] md:gap-[90px] ">
 			<Hero />
 			<Bestseller />
 			<CategorySection />

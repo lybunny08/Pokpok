@@ -3,7 +3,7 @@ import ButtonComponents from '../ui/ButtonComponents';
 function Hero() {
 	return (
 		<div
-			className='flex bg-black h-screen mx-[-30px] px-[30px] relative'
+			className='flex bg-black h-screen mx-[-30px] px-[30px] relative text-white'
 			style={{
 				backgroundImage: `url(${Herobg})`,
 				backgroundSize: 'cover',
@@ -18,8 +18,8 @@ function Hero() {
 			<div className='flex flex-row w-full justify-between items-end py-[40px] relative z-20'>
 				<div className='flex flex-col gap-[24px] items-start'>
 					<div className='space-y-2'>
-						<span className='text-white'>Mosturezed & Protect</span>
-						<h1 className='text-[40px] leading-[50px] w-[520px] whitef5 ' style={{ letterSpacing: '0.4px' }}>
+						<span>Mosturezed & Protect</span>
+						<h1 className='text-[40px] leading-[50px] w-[520px] font-bold ' style={{ letterSpacing: '0.4px' }}>
 							Introduction the <br /> new Body Lotion
 						</h1>
 					</div>

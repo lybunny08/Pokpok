@@ -1,59 +1,6 @@
 import React, { useState } from 'react';
 import ProductCard from '../ui/ProductCard';
-import red from '../../../assets/products/red.png';
-import bleu from '../../../assets/products/blue.png';
-import grey from '../../../assets/products/grey.png';
-
-const productsData = [
-  {
-    id: 1,
-    image: red,
-    name: 'Hair hydrator',
-    category: 'Hair'
-  },
-  {
-    id: 2,
-    image: bleu,
-    name: 'Eye Serum',
-    category: 'Body'
-  },
-  {
-    id: 3,
-    image: grey,
-    name: 'Face Toner',
-    category: 'Skin'
-  },
-  {
-    id: 4,
-    image: bleu,
-    name: 'Eye Repair',
-    category: 'Body'
-  },
-  {
-    id: 5,
-    image: bleu,
-    name: 'Eye Repair 2',
-    category: 'Body'
-  },
-  {
-    id: 6,
-    image: bleu,
-    name: 'Eye Repair 3',
-    category: 'Body'
-  },
-  {
-    id: 7,
-    image: red,
-    name: 'Hair Mask',
-    category: 'Hair'
-  },
-  {
-    id: 8,
-    image: grey,
-    name: 'Face Cream',
-    category: 'Skin'
-  }
-];
+import productsData from '../data/productsData';
 
 function Featured() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -72,7 +19,6 @@ function Featured() {
     setTimeout(() => {
       setCurrentIndex(prev => {
         const newIndex = prev + 1;
-        // VOTRE LOGIQUE SIMPLE ET CLAIRE
         return newIndex >= totalProducts - itemsPerView + 1 ? 0 : newIndex;
       });
       setIsAnimating(false);
@@ -87,7 +33,6 @@ function Featured() {
     setTimeout(() => {
       setCurrentIndex(prev => {
         const newIndex = prev - 1;
-        // VOTRE LOGIQUE SIMPLE ET CLAIRE
         return newIndex < 0 ? totalProducts - itemsPerView : newIndex;
       });
       setIsAnimating(false);
@@ -125,21 +70,19 @@ function Featured() {
         </div>
       </div>
       
-      {/* Slider avec animation */}
       <div className="relative overflow-hidden">
         <div 
           className="flex gap-[16px] transition-transform duration-300 ease-in-out"
-          style={{
-            transform: translateX,
-          }}
+          style={{ transform: translateX }}
         >
-          {duplicatedProducts.map((product, index) => (
+          {duplicatedProducts.map((product, index) => ( // <-- Utilisez duplicatedProducts ici
             <div 
               key={`${product.id}-${index}`}
               className="flex-shrink-0"
               style={{ width: `${100 / itemsPerView}%` }}
             >
               <ProductCard
+                productId={product.id}
                 imageUrl={product.image}
                 productName={product.name}
                 category={product.category}

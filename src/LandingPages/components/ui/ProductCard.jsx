@@ -1,5 +1,6 @@
 // components/ProductCard.jsx
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const ProductCard = ({
   imageUrl,
@@ -7,19 +8,36 @@ const ProductCard = ({
   productName,
   category,
   categoryColor = '#bababa',
-  height = 'h-[220px] lg:h-[320px]',
+  height = 'h-[220px] md:h-[320px]',
   className = '',
-  initialLiked = false // Nouvelle prop pour l'état initial
+  initialLiked = false,
+  productId // Nouvelle prop pour l'ID du produit
 }) => {
   const [isLiked, setIsLiked] = useState(initialLiked);
+  const navigate = useNavigate(); // Hook pour la navigation
 
   const handleLikeClick = (e) => {
     e.stopPropagation(); // Empêche le déclenchement du clic sur la carte produit
     setIsLiked(!isLiked);
   };
 
+  const handleCardClick = () => {
+    // Navigation vers la page de détails du produit
+    navigate(`/product/${productId}`);
+  };
+
   return (
-    <div className={`flex flex-col gap-[6px] ${className}`}>
+    <div 
+      className={`flex flex-col gap-[6px] ${className} cursor-pointer`}
+      onClick={handleCardClick}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          handleCardClick();
+        }
+      }}
+    >
       <div
         className={`flex items-start justify-end p-4 w-full rounded-xl bg-cover bg-center bg-no-repeat relative ${height}`}
         style={{

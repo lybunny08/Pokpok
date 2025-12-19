@@ -137,9 +137,9 @@ function Navbar() {
       <div
         className={`w-full fixed top-0 left-0 z-[100] transition-colors duration-300 ${navbarBg}`}
       >
-        <div className="flex justify-between items-center my-[8px] lg:mx-[30px] px-[6px] lg:px-[8px] relative">
+        <div className="flex justify-between items-center my-[8px] md:mx-[20px] lg:mx-[30px] px-[6px] lg:px-[8px] relative">
           <p className={`font-medium text-[29px] ${textColor}`}>Elyanne</p>
-          <div className={`flex flex-row text-[14px] w-2/3 items-center font-medium justify-between ${textColor}`} style={{ letterSpacing: '0.4px' }}>
+          <div className={`flex flex-row text-[14px] lg:w-2/3 md:gap-[60px] items-center font-medium justify-between ${textColor}`} style={{ letterSpacing: '0.4px' }}>
             <div className="flex flex-row gap-[24px]">
               {/* Liens avec dropdown */}
               <a

@@ -17,19 +17,19 @@ function Footer() {
         <span className='text-[24px] '>@Elyanne</span>
       </div>
 
-      <div className='grid grid-cols-2 lg:grid-cols-5 gap-[16px] '>
+      <div className='grid grid-cols-2 md:grid-cols-5 gap-[16px] '>
         {images.map((src, idx) => (
           <img
             key={idx}
             src={src}
             alt={`gallery-${idx}`}
-            className={`h-[140px] lg:h-[220px] w-full rounded-sm object-cover ${idx >= 4 ? 'hidden md:flex' : ''}`}
+            className={`h-[140px] md:h-[220px] w-full rounded-sm object-cover ${idx >= 4 ? 'hidden md:flex' : ''}`}
           />
         ))}
       </div>
 
       <Newsletters />
-      <div className='flex flex-col lg:flex-row gap-[24px] lg:gap-0 justify-between'>
+      <div className='flex flex-col md:flex-row gap-[24px] md:gap-0 justify-between'>
         <div className='flex flex-col justify-between'>
           <div className='flex flex-col'>
             <span className=''>Elyanne</span>
@@ -39,7 +39,7 @@ function Footer() {
         </div>
 
         <div className='flex flex-col gap-[80px] '>
-          <div className='flex flex-col lg:flex-row gap-[32px] pr-[40px] '>
+          <div className='flex flex-col md:flex-row gap-[32px] pr-[40px] '>
             <div className='flex flex-col gap-[16px]'>
               <span className='uppercase text-[12px] font-medium '>Shop</span>
               <div className='flex flex-col gap-[8px]'>

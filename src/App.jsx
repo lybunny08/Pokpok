@@ -1,17 +1,23 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './LandingPages/pages/Home'
-import NavBar from './LandingPages/components/Navbar'
-import './App.css'
+import ProductPageInfo from './LandingPages/pages/ProductPageInfo';
+import Navbar from './LandingPages/components/Navbar';
 
 function App() {
-
   return (
-    <div className='overflow-hidden'>
-      <>
-        <NavBar />
-        <Home />
-      </>
-    </div>
-  )
+    <Router>
+      <div className='overflow-hidden'>
+        <header>
+          <Navbar />
+        </header>
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/product/:id" element={<ProductPageInfo />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
+  );
 }
-
-export default App
+export default App;
