@@ -1,8 +1,8 @@
 import React from 'react';
-import JournalCard from '../../components/JournalCard';
-import journal1 from '../../assets/journal1.webp';
-import journal2 from '../../assets/journal2.png';
-import journal3 from '../../assets/journal3.webp';
+import JournalCard from '../ui/JournalCard';
+import journal1 from '../../../assets/journal1.webp';
+import journal2 from '../../../assets/journal2.png';
+import journal3 from '../../../assets/journal3.webp';
 
 function Journale() {
   const journalArticles = [

@@ -1,10 +1,10 @@
 import React from 'react';
 import Newsletters from '../../components/NewsLetters';
-import body from '../../assets/body.webp'
-import men from '../../assets/men.webp'
-import apply from '../../assets/Apply.webp'
-import shower from '../../assets/Wet_portrait.png'
-import women from '../../assets/women.webp'
+import body from '../../../assets/body.webp'
+import men from '../../../assets/men.webp'
+import apply from '../../../assets/Apply.webp'
+import shower from '../../../assets/Wet_portrait.png'
+import women from '../../../assets/women.webp'
 
 
 function Footer() {

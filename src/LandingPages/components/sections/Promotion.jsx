@@ -1,6 +1,6 @@
 import React from 'react';
-import promotion from '../../assets/Promotion.png'
-import ButtonComponents from '../../components/Common/ButtonComponents';
+import promotion from '../../../assets/Promotion.png'
+import ButtonComponents from '../ui/ButtonComponents';
 
 function Promotion() {
   return (

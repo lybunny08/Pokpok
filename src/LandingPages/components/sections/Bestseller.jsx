@@ -1,8 +1,8 @@
 import React from 'react';
-import ProductCard from '../../components/ProductCard';
-import red from '../../assets/products/red.png';
-import bleu from '../../assets/products/blue.png';
-import grey from '../../assets/products/grey.png';
+import ProductCard from '../ui/ProductCard';
+import red from '../../../assets/products/red.png';
+import bleu from '../../../assets/products/blue.png';
+import grey from '../../../assets/products/grey.png';
 
 // Tableau de données des produits
 const productsData = [

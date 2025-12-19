@@ -1,8 +1,7 @@
-// components/CategorySection.jsx
-import CategoryCard from '../../components/CategoryCard';
-import Skin from '../../assets/skin.jpg';
-import Hair from '../../assets/hair.webp';
-import Body from '../../assets/body.webp';
+import CategoryCard from '../ui/CategoryCard';
+import Skin from '../../../assets/skin.jpg';
+import Hair from '../../../assets/hair.webp';
+import Body from '../../../assets/body.webp';
 
 // 1. Définir les données des catégories
 const categories = [

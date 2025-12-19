@@ -1,7 +1,7 @@
 import React from 'react';
-import ProductCard from '../../components/ProductCard';
-import red from '../../assets/products/red.png'
-import hairnews from '../../assets/Hairnews.png'
+import ProductCard from '../ui/ProductCard';
+import red from '../../../assets/products/red.png'
+import hairnews from '../../../assets/Hairnews.png'
 
 function NewProduct() {
   return (

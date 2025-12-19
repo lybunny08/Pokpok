@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import Haircare from '../../assets/Haircare.png'
-import Skincare from '../../assets/Skincare.png'
-import Bodycare from '../../assets/herobg.webp'
-import Kits from '../../assets/Kits.webp'
+import Haircare from '../../../assets/Haircare.png'
+import Skincare from '../../../assets/Skincare.png'
+import Bodycare from '../../../assets/herobg.webp'
+import Kits from '../../../assets/Kits.webp'
 
 function NavBarProducts() {
   const containerRef = useRef(null);

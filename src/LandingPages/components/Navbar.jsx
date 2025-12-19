@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import DropDownNav from './NavbarDropDown/NavbarDropDown';
-import SearchComponents from './SearchComponents';
+import SearchComponents from './ui/SearchComponents';
 import gsap from 'gsap';
 
 function Navbar() {

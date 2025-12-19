@@ -1,5 +1,5 @@
-import Herobg from '../../assets/herobg1.png'
-import ButtonComponents from '../../components/Common/ButtonComponents';
+import Herobg from '../../../assets/herobg1.png'
+import ButtonComponents from '../ui/ButtonComponents';
 function Hero() {
 	return (
 		<div

@@ -1,20 +1,17 @@
-import Navbar from "../../components/Navbar";
-import Hero from "../sections/Hero";
-import Intro from "../sections/Intro";
-import Bestseller from "../sections/Bestseller";
-import CategorySection from "../sections/CategorySection"
-import Footer from "../sections/Footer"
-import Testimonials from "../sections/Testimonials"
-import Journale from "../sections/Journale";
-import NewProduct from "../sections/NewProduct";
-import Featured from "../sections/Featured";
-import Information from "../sections/Information";
-import Promotion from "../sections/Promotion";
+import Hero from "../components/sections/Hero"
+import Bestseller from "../components/sections/Bestseller";
+import CategorySection from "../components/sections/CategorySection"
+import Footer from "../components/sections/Footer"
+import Testimonials from "../components/sections/Testimonials"
+import Journale from "../components/sections/Journale";
+import NewProduct from "../components/sections/NewProduct";
+import Featured from "../components/sections/Featured";
+import Information from "../components/sections/Information";
+import Promotion from "../components/sections/Promotion";
 function Home() {
 	return (
 		<div className="px-[30px] pb-[20px] flex flex-col gap-[90px] ">
 			<Hero />
-			{/* <Intro /> */}
 			<Bestseller />
 			<CategorySection />
 			<Featured></Featured>

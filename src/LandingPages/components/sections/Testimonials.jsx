@@ -1,5 +1,5 @@
 import React from 'react';
-import TestimonialsCard from '../../components/TestimonialsCard';
+import TestimonialsCard from '../ui/TestimonialsCard';
 
 function Testimonials() {
     return (
@@ -7,8 +7,6 @@ function Testimonials() {
         <span className='text-[32px] font-medium'>Testimonials</span>
         <div className='flex flex-row gap-[220px] '>
           <TestimonialsCard />
-          {/* <TestimonialsCard />
-          <TestimonialsCard /> */}
         </div>
       </div>
     );
