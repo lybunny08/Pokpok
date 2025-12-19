@@ -2,11 +2,11 @@ import Navbar from "../../components/Navbar";
 import Hero from "../sections/Hero";
 import Intro from "../sections/Intro";
 import Bestseller from "../sections/Bestseller";
-import CategorySection from "../sections/Category_section"
+import CategorySection from "../sections/CategorySection"
 import Footer from "../sections/Footer"
 import Testimonials from "../sections/Testimonials"
 import Journale from "../sections/Journale";
-import NewProduct from "../sections/New_product";
+import NewProduct from "../sections/NewProduct";
 import Featured from "../sections/Featured";
 import Information from "../sections/Information";
 import Promotion from "../sections/Promotion";

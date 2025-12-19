@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import DropDownNav from './Absolutenav/Drop_down_nav';
+import DropDownNav from './NavbarDropDown/NavbarDropDown';
 import SearchComponents from './SearchComponents';
 import gsap from 'gsap';
 

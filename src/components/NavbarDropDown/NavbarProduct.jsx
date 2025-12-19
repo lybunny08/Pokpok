@@ -5,7 +5,7 @@ import Skincare from '../../assets/Skincare.png'
 import Bodycare from '../../assets/herobg.webp'
 import Kits from '../../assets/Kits.webp'
 
-function ProductsNavBar() {
+function NavBarProducts() {
   const containerRef = useRef(null);
   const itemsRef = useRef([]);
 
@@ -70,4 +70,4 @@ function ProductsNavBar() {
   );
 }
 
-export default ProductsNavBar;
+export default NavBarProducts;

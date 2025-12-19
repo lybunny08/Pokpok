@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 
-function AboutNavBar() {
+function NavBarAbout() {
   const containerRef = useRef(null);
   const itemsRef = useRef([]);
 
@@ -55,4 +55,4 @@ function AboutNavBar() {
   );
 }
 
-export default AboutNavBar;
+export default NavBarAbout;

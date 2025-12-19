@@ -1,9 +1,9 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import AboutNavBar from "./Aboutnabar";
-import ProductsNavBar from "./Products_navbar";
+import NavBarAbout from "./NavbarAbout";
+import NavBarProducts from "./NavbarProduct";
 
-function DropDownNav({ activeNav }) {
+function NavbarDropDown({ activeNav }) {
   const menuRef = useRef(null);
   const tl = useRef(null);
 
@@ -32,11 +32,11 @@ function DropDownNav({ activeNav }) {
       style={{ clipPath: "inset(0 0 100% 0)" }}
       className="bg-white w-full shadow-xl pt-[24px] pb-[16px] px-[30px] "
     >
-      {activeNav === "about" && <AboutNavBar />}
-      {activeNav === "products" && <ProductsNavBar />}
+      {activeNav === "about" && <NavBarAbout />}
+      {activeNav === "products" && <NavBarProducts />}
     </div>
   );
 }
 
 
-export default DropDownNav;
+export default NavbarDropDown;
