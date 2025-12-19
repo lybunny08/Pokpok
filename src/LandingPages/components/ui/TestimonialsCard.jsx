@@ -71,10 +71,13 @@ function TestimonialsCard() {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {testimonials.map((testimonial) => (
+      {testimonials.map((testimonial,index) => (
         <div
           key={testimonial.id}
-          className="group flex flex-col p-6 rounded-xl bg-white border border-gray-100"
+          className={`group flex flex-col p-6 rounded-xl bg-white border border-gray-100 ${
+            // Cache les éléments après le 3ème sur mobile
+            index >= 3 ? 'hidden md:flex' : ''
+          }`}
         >
           {/* En-tête avec nom et étoiles */}
           <div className="flex flex-col gap-2 mb-4">
