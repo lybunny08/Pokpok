@@ -39,7 +39,7 @@ function Products() {
         <h2 className='text-[24px] font-medium '>Bestseller</h2>
         <span>Shop all</span>
       </div>
-      <div className='h-full grid grid-cols-4 gap-[16px]'>
+      <div className='h-full grid grid-cols-2 lg:grid-cols-4 gap-[16px]'>
         {productsData.map((product) => (
           <ProductCard
             key={product.id}

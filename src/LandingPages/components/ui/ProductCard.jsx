@@ -7,7 +7,7 @@ const ProductCard = ({
   productName,
   category,
   categoryColor = '#bababa',
-  height = '320px',
+  height = 'h-[220px] lg:h-[320px]',
   className = '',
   initialLiked = false // Nouvelle prop pour l'état initial
 }) => {
@@ -21,7 +21,7 @@ const ProductCard = ({
   return (
     <div className={`flex flex-col gap-[6px] ${className}`}>
       <div
-        className='flex items-start justify-end p-4 w-full rounded-xl bg-cover bg-center bg-no-repeat relative'
+        className={`flex items-start justify-end p-4 w-full rounded-xl bg-cover bg-center bg-no-repeat relative ${height}`}
         style={{
           backgroundImage: `url(${imageUrl})`,
           backgroundColor: categoryColor,

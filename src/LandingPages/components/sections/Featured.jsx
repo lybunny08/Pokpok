@@ -50,7 +50,7 @@ function Featured() {
           </button>
         </div>
       </div>
-      <div className='h-full grid grid-cols-4 gap-[16px]'>
+      <div className='h-full grid lg:grid-cols-4 gap-[16px]'>
         {productsData.map((product) => (
           <ProductCard
             key={product.id}

@@ -10,11 +10,11 @@ import Information from "../components/sections/Information";
 import Promotion from "../components/sections/Promotion";
 function Home() {
 	return (
-		<div className="px-[30px] pb-[20px] flex flex-col gap-[90px] ">
+		<div className="px-[16px] lg:px-[30px] pb-[20px] flex flex-col gap-[60px] lg:gap-[90px] ">
 			<Hero />
 			<Bestseller />
 			<CategorySection />
-			<Featured></Featured>
+			<Featured />
 			<NewProduct />
 			<Journale />
 			<Information />
