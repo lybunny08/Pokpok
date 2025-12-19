@@ -11,7 +11,7 @@ function Footer() {
   const images = [body, men, apply, shower, women];
 
   return (
-    <div className='flex flex-col gap-[32px] '>
+    <div className='flex flex-col gap-[32px] pt-[100px] '>
       <div className='flex flex-col items-center justify-center '>
         <span>Follow us</span>
         <span className='text-[24px] '>@Elyanne</span>

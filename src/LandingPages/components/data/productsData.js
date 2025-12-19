@@ -9,7 +9,7 @@ const productsData = [
     name: 'Hair hydrator',
     category: 'Hair',
     price: 29.99,
-    description: 'Hydratant capillaire intensif'
+    description: 'This Hair Oil is expertly crafted to deeply hydrate and repair damaged hair. With its powerful formula, this oil nourishes each strand, leaving hair healthier and more manageable. Experience the benefits of shiny, smooth, and nourished hair with this Hair Oil.'
   },
   {
     id: 2,

@@ -1,7 +1,6 @@
 import Hero from "../components/sections/Hero"
 import Bestseller from "../components/sections/Bestseller";
 import CategorySection from "../components/sections/CategorySection"
-import Footer from "../components/sections/Footer"
 import Testimonials from "../components/sections/Testimonials"
 import Journale from "../components/sections/Journale";
 import NewProduct from "../components/sections/NewProduct";
@@ -10,7 +9,7 @@ import Information from "../components/sections/Information";
 import Promotion from "../components/sections/Promotion";
 function Home() {
 	return (
-		<div className="px-[16px] md:px-[30px] pb-[20px] flex flex-col gap-[60px] md:gap-[90px] ">
+		<div className="flex flex-col gap-[60px] md:gap-[90px] ">
 			<Hero />
 			<Bestseller />
 			<CategorySection />
@@ -20,7 +19,6 @@ function Home() {
 			<Information />
 			<Promotion />
 			<Testimonials />
-			<Footer />
 		</div>
 	);
 }
