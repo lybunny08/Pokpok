@@ -1,286 +1,370 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo, useCallback } from 'react';
 import DropDownNav from './NavbarDropDown/NavbarDropDown';
 import SearchComponents from './ui/SearchComponents';
 import gsap from 'gsap';
 import { useLocation, Link } from 'react-router-dom';
 
+// Constantes pour éviter les "magic strings"
+const NAV_TYPES = {
+  PRODUCTS: 'products',
+  ABOUT: 'about',
+  GALLERY: 'gallery',
+  JOURNAL: 'journal',
+  FAQ: 'faq'
+};
+
+const DROPDOWN_NAVS = [NAV_TYPES.PRODUCTS, NAV_TYPES.ABOUT];
+
+// Hook personnalisé pour gérer le scroll
+const useScrollPosition = (threshold = 50) => {
+  const [isTop, setIsTop] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => setIsTop(window.scrollY <= threshold);
+    window.addEventListener('scroll', handleScroll);
+    // Vérifier immédiatement la position
+    handleScroll();
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [threshold]);
+
+  return isTop;
+};
+
+// Hook personnalisé pour gérer les overlays avec GSAP
+const useOverlayAnimation = (isVisible, ref) => {
+  useEffect(() => {
+    if (!ref.current) return;
+
+    const animation = isVisible
+      ? gsap.to(ref.current, {
+          opacity: 1,
+          pointerEvents: 'auto',
+          duration: 0.3,
+          ease: 'power2.out'
+        })
+      : gsap.to(ref.current, {
+          opacity: 0,
+          pointerEvents: 'none',
+          duration: 0.2,
+          ease: 'power2.in'
+        });
+
+    return () => {
+      animation.kill();
+    };
+  }, [isVisible, ref]);
+};
+
+// Hook personnalisé pour gérer l'animation de la recherche
+const useSearchAnimation = (isVisible, searchRef) => {
+  useEffect(() => {
+    if (!searchRef.current) return;
+
+    if (isVisible) {
+      gsap.fromTo(
+        searchRef.current,
+        { x: 100, opacity: 0 },
+        { 
+          x: 0, 
+          opacity: 1, 
+          duration: 0.3, 
+          ease: 'power2.out',
+          onStart: () => gsap.set(searchRef.current, { display: 'block' })
+        }
+      );
+    } else {
+      gsap.to(searchRef.current, {
+        x: 100,
+        opacity: 0,
+        duration: 0.2,
+        ease: 'power2.in',
+        onComplete: () => gsap.set(searchRef.current, { display: 'none' })
+      });
+    }
+  }, [isVisible, searchRef]);
+};
+
 function Navbar() {
   const [activeNav, setActiveNav] = useState(null);
   const [showSearch, setShowSearch] = useState(false);
-  const [isTop, setIsTop] = useState(true);
   const [hoveredNavItem, setHoveredNavItem] = useState(null);
+  
   const dropdownOverlayRef = useRef(null);
   const searchOverlayRef = useRef(null);
   const dropdownRef = useRef(null);
   const searchRef = useRef(null);
-  const location = useLocation(); // <-- Hook pour obtenir la route actuelle
+  
+  const location = useLocation();
+  const isTop = useScrollPosition(50);
 
   // Désactiver le scroll quand la recherche est ouverte
   useEffect(() => {
-    if (showSearch) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
+    document.body.style.overflow = showSearch ? 'hidden' : 'unset';
     return () => {
       document.body.style.overflow = 'unset';
     };
   }, [showSearch]);
-
-  // Fermer les menus quand on clique sur le logo
-  const handleLogoInteraction = () => {
-    setActiveNav(null);
-    setShowSearch(false);
-    setHoveredNavItem(null);
-  };
-
-  // Gérer scroll pour changer bg
-  useEffect(() => {
-    const handleScroll = () => setIsTop(window.scrollY <= 50);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   // Réinitialiser l'état quand on change de route
   useEffect(() => {
     setActiveNav(null);
     setShowSearch(false);
     setHoveredNavItem(null);
-  }, [location.pathname]); // <-- Réinitialise quand la route change
+  }, [location.pathname]);
 
-  // Définir quels liens ont des dropdowns
-  const hasDropdown = (navType) => {
-    return ['products', 'about'].includes(navType);
-  };
+  // Déterminer si on est sur la page d'accueil
+  const isHomePage = location.pathname === '/';
+  const hasDropdownOpen = activeNav !== null;
+
+  // Logique centralisée pour le style du navbar
+  const { navbarBg, textColor } = useMemo(() => {
+    let bg = 'bg-white';
+    let color = 'text-black';
+
+    if (isHomePage) {
+      if (isTop && !hasDropdownOpen && !showSearch) {
+        bg = 'bg-transparent';
+        color = 'text-white';
+      }
+    }
+
+    return { navbarBg: bg, textColor: color };
+  }, [isHomePage, isTop, hasDropdownOpen, showSearch]);
+
+  // Vérifier si un lien a un dropdown
+  const hasDropdown = useCallback((navType) => {
+    return DROPDOWN_NAVS.includes(navType);
+  }, []);
 
   // Gestion du hover sur les liens
-  const handleNavItemHover = (navType) => {
+  const handleNavItemHover = useCallback((navType) => {
     setHoveredNavItem(navType);
     
     if (hasDropdown(navType)) {
-      // Si c'est un lien avec dropdown, l'ouvrir
       setActiveNav(navType);
       setShowSearch(false);
     } else {
-      // Si c'est un lien sans dropdown, fermer le dropdown
       setActiveNav(null);
     }
-  };
+  }, [hasDropdown]);
 
   // Ouvrir/fermer la recherche
-  const handleSearchClick = () => {
-    setShowSearch(!showSearch);
+  const handleSearchClick = useCallback(() => {
+    setShowSearch(prev => !prev);
     setActiveNav(null);
     setHoveredNavItem(null);
-  };
+  }, []);
 
-  // Vérifier si on est sur la page d'accueil
-  const isHomePage = location.pathname === '/';
+  // Fermer tous les menus
+  const handleLogoInteraction = useCallback(() => {
+    setActiveNav(null);
+    setShowSearch(false);
+    setHoveredNavItem(null);
+  }, []);
 
-  // Déterminer le style du navbar
-  const hasDropdownOpen = activeNav !== null;
-  
-  // Logique améliorée pour le background
-  let navbarBg = "bg-white"; // Par défaut blanc
-  
-  if (isHomePage) {
-    // Sur la page d'accueil seulement
-    if (isTop && !hasDropdownOpen && !showSearch) {
-      navbarBg = "bg-transparent";
-    } else {
-      navbarBg = "bg-white";
+  // Gestionnaires d'événements pour les dropdowns
+  const handleDropdownMouseEnter = useCallback(() => {
+    if (activeNav && hasDropdown(activeNav)) {
+      setActiveNav(activeNav);
     }
-  } else {
-    // Sur toutes les autres pages, toujours blanc
-    navbarBg = "bg-white";
-  }
+  }, [activeNav, hasDropdown]);
 
-  // Logique pour la couleur du texte
-  let textColor = "text-black"; // Par défaut noir
-  
-  if (isHomePage) {
-    // Sur la page d'accueil seulement
-    if (isTop && !hasDropdownOpen && !showSearch) {
-      textColor = "text-white";
-    } else {
-      textColor = "text-black";
-    }
-  } else {
-    // Sur toutes les autres pages, toujours noir
-    textColor = "text-black";
-  }
+  const handleDropdownMouseLeave = useCallback(() => {
+    setActiveNav(null);
+  }, []);
 
-  // Animation pour l'overlay du dropdown
-  useEffect(() => {
-    if (dropdownOverlayRef.current) {
-      if (activeNav) {
-        gsap.to(dropdownOverlayRef.current, {
-          opacity: 1,
-          pointerEvents: 'auto',
-          duration: 0.3,
-          ease: 'power2.out',
-        });
-      } else {
-        gsap.to(dropdownOverlayRef.current, {
-          opacity: 0,
-          pointerEvents: 'none',
-          duration: 0.2,
-          ease: 'power2.in',
-        });
-      }
-    }
-  }, [activeNav]);
+  // Animation des overlays
+  useOverlayAnimation(activeNav, dropdownOverlayRef);
+  useOverlayAnimation(showSearch, searchOverlayRef);
+  useSearchAnimation(showSearch, searchRef);
 
-  // Animation pour l'overlay de la recherche
-  useEffect(() => {
-    if (searchOverlayRef.current) {
-      if (showSearch) {
-        gsap.to(searchOverlayRef.current, {
-          opacity: 1,
-          pointerEvents: 'auto',
-          duration: 0.3,
-          ease: 'power2.out',
-        });
-      } else {
-        gsap.to(searchOverlayRef.current, {
-          opacity: 0,
-          pointerEvents: 'none',
-          duration: 0.2,
-          ease: 'power2.in',
-        });
-      }
-    }
-  }, [showSearch]);
+  // Liens de navigation sans dropdown
+  const simpleNavLinks = useMemo(() => [
+    { type: NAV_TYPES.GALLERY, label: 'Gallery' },
+    { type: NAV_TYPES.JOURNAL, label: 'Journal' },
+    { type: NAV_TYPES.FAQ, label: 'FAQ' }
+  ], []);
 
-  // Animation pour la recherche
-  useEffect(() => {
-    if (searchRef.current) {
-      if (showSearch) {
-        gsap.fromTo(
-          searchRef.current,
-          { x: 100, opacity: 0 },
-          { 
-            x: 0, 
-            opacity: 1, 
-            duration: 0.3, 
-            ease: 'power2.out',
-            onStart: () => gsap.set(searchRef.current, { display: 'block' })
-          }
-        );
-      } else {
-        gsap.to(searchRef.current, {
-          x: 100,
-          opacity: 0,
-          duration: 0.2,
-          ease: 'power2.in',
-          onComplete: () => gsap.set(searchRef.current, { display: 'none' })
-        });
-      }
-    }
-  }, [showSearch]);
+  // Liens de navigation avec dropdown
+  const dropdownNavLinks = useMemo(() => [
+    { type: NAV_TYPES.PRODUCTS, label: 'Products' },
+    { type: NAV_TYPES.ABOUT, label: 'About' }
+  ], []);
+
+  // Liens d'actions (droite de la navbar)
+  const actionLinks = useMemo(() => [
+    { label: 'Search', onClick: handleSearchClick },
+    { label: 'Favorites' },
+    { label: 'Account' },
+    { label: 'Bag (0)' }
+  ], [handleSearchClick]);
 
   return (
     <>
-      {/* Navbar - z-index: 100 */}
-      <div
-        className={`w-full fixed top-0 left-0 z-[100] transition-colors duration-300 ${navbarBg}`}
+      {/* Navbar principal */}
+      <nav
+        className={`w-full fixed top-0 left-0 z-100 transition-colors duration-300 ${navbarBg}`}
+        role="navigation"
+        aria-label="Main navigation"
       >
-        <div className="flex justify-between items-center my-[8px] md:mx-[20px] lg:mx-[30px] px-[6px] lg:px-[8px] relative">
-          <Link 
-            to="/" 
+        <div className="flex justify-between items-center my-2 md:mx-5 lg:mx-7.5 px-1.5 lg:px-2 relative">
+          {/* Logo */}
+          <Logo 
             onClick={handleLogoInteraction}
-            className={`font-medium text-[29px] ${textColor} no-underline hover:opacity-80 transition-opacity`}
-          >
-            Elyanne
-          </Link>
-          <div className={`flex flex-row text-[14px] lg:w-2/3 md:gap-[60px] items-center font-medium justify-between ${textColor}`} style={{ letterSpacing: '0.4px' }}>
-            <div className="flex flex-row gap-[24px]">
+            textColor={textColor}
+          />
+
+          {/* Liens de navigation */}
+          <div className={`flex flex-row text-sm lg:w-2/3 md:gap-15 items-center font-medium justify-between ${textColor}`} 
+               style={{ letterSpacing: '0.4px' }}>
+            
+            <div className="flex flex-row gap-6">
               {/* Liens avec dropdown */}
-              <a
-                onMouseEnter={() => handleNavItemHover('products')}
-                className={`cursor-pointer link-item-underline ${activeNav === 'products' ? 'text-black' : textColor}`}
-              >
-                Products
-              </a>
-              <a
-                onMouseEnter={() => handleNavItemHover('about')}
-                className={`cursor-pointer link-item-underline ${activeNav === 'about' ? 'text-black' : textColor}`}
-              >
-                About
-              </a>
-              
-              {/* Liens SANS dropdown */}
-              <a 
-                onMouseEnter={() => handleNavItemHover('gallery')}
-                className={`cursor-pointer link-item-underline ${textColor}`}
-              >
-                Gallery
-              </a>
-              <a 
-                onMouseEnter={() => handleNavItemHover('journal')}
-                className={`cursor-pointer link-item-underline ${textColor}`}
-              >
-                Journal
-              </a>
-              <a 
-                onMouseEnter={() => handleNavItemHover('faq')}
-                className={`cursor-pointer link-item-underline ${textColor}`}
-              >
-                FAQ
-              </a>
+              {dropdownNavLinks.map(({ type, label }) => (
+                <NavLink
+                  key={type}
+                  type={type}
+                  label={label}
+                  hasDropdown={hasDropdown(type)}
+                  isActive={activeNav === type}
+                  textColor={textColor}
+                  onHover={handleNavItemHover}
+                />
+              ))}
+
+              {/* Liens sans dropdown */}
+              {simpleNavLinks.map(({ type, label }) => (
+                <NavLink
+                  key={type}
+                  type={type}
+                  label={label}
+                  hasDropdown={false}
+                  textColor={textColor}
+                  onHover={handleNavItemHover}
+                />
+              ))}
             </div>
-            <div className="flex flex-row gap-[24px]">
-              <p 
-                className={`cursor-pointer link-item-underline ${textColor}`}
-                onClick={handleSearchClick}
-              >
-                Search
-              </p>
-              <p className={`cursor-pointer link-item-underline ${textColor}`}>Favorites</p>
-              <p className={`cursor-pointer link-item-underline ${textColor}`}>Account</p>
-              <p className={`cursor-pointer link-item-underline ${textColor}`}>Bag (0)</p>
+
+            {/* Actions (droite) */}
+            <div className="flex flex-row gap-6">
+              {actionLinks.map(({ label, onClick }) => (
+                <ActionLink
+                  key={label}
+                  label={label}
+                  textColor={textColor}
+                  onClick={onClick}
+                />
+              ))}
             </div>
           </div>
         </div>
 
-        {/* Dropdown - seulement pour 'products' et 'about' */}
+        {/* Dropdown */}
         {activeNav && hasDropdown(activeNav) && (
-          <div
+          <Dropdown 
             ref={dropdownRef}
-            className="absolute left-0 w-full z-[101]"
-            style={{ top: "100%" }}
-            onMouseEnter={() => setActiveNav(activeNav)}
-            onMouseLeave={() => setActiveNav(null)}
-          >
-            <DropDownNav activeNav={activeNav} />
-          </div>
+            activeNav={activeNav}
+            onMouseEnter={handleDropdownMouseEnter}
+            onMouseLeave={handleDropdownMouseLeave}
+          />
         )}
-      </div>
+      </nav>
 
-      {/* Overlay pour le Dropdown - z-index: 99 */}
-      <div
+      {/* Overlays */}
+      <Overlay 
         ref={dropdownOverlayRef}
-        className="fixed inset-0 bg-black/30 z-[99] pointer-events-none opacity-0"
         onClick={() => setActiveNav(null)}
+        zIndex={99}
       />
 
-      {/* Overlay pour la Recherche - z-index: 150 */}
-      <div
+      <Overlay 
         ref={searchOverlayRef}
-        className="fixed inset-0 bg-black/30 z-[150] pointer-events-none opacity-0"
         onClick={handleSearchClick}
+        zIndex={150}
       />
 
-      {/* Composant Search - z-index: 151 */}
-      <div 
+      {/* Composant de recherche */}
+      <SearchPanel 
         ref={searchRef}
-        className="fixed top-0 right-0 h-full z-[151]"
-        style={{ display: 'none' }}
-      >
-        <SearchComponents onClose={handleSearchClick} />
-      </div>
+        isVisible={showSearch}
+        onClose={handleSearchClick}
+      />
     </>
   );
 }
+
+// Composants séparés pour plus de clarté
+const Logo = React.memo(({ onClick, textColor }) => (
+  <Link 
+    to="/" 
+    onClick={onClick}
+    className={`font-medium text-[29px] ${textColor} no-underline hover:opacity-80 transition-opacity`}
+    aria-label="Go to homepage"
+  >
+    Elyanne
+  </Link>
+));
+
+const NavLink = React.memo(({ type, label, hasDropdown, isActive = false, textColor, onHover }) => (
+  <button
+    type="button"
+    onMouseEnter={() => onHover(type)}
+    className={`cursor-pointer link-item-underline bg-transparent border-none p-0 ${
+      isActive ? 'text-black' : textColor
+    }`}
+    aria-haspopup={hasDropdown ? 'true' : 'false'}
+    aria-expanded={isActive ? 'true' : 'false'}
+  >
+    {label}
+  </button>
+));
+
+const ActionLink = React.memo(({ label, textColor, onClick }) => (
+  <button
+    type="button"
+    onClick={onClick}
+    className={`cursor-pointer link-item-underline bg-transparent border-none p-0 ${textColor}`}
+  >
+    {label}
+  </button>
+));
+
+const Dropdown = React.forwardRef(({ activeNav, onMouseEnter, onMouseLeave }, ref) => (
+  <div
+    ref={ref}
+    className="absolute left-0 w-full z-101"
+    style={{ top: "100%" }}
+    onMouseEnter={onMouseEnter}
+    onMouseLeave={onMouseLeave}
+    role="menu"
+    aria-label={`${activeNav} menu`}
+  >
+    <DropDownNav activeNav={activeNav} />
+  </div>
+));
+
+const Overlay = React.forwardRef(({ onClick, zIndex }, ref) => (
+  <div
+    ref={ref}
+    className="fixed inset-0 bg-black/30 pointer-events-none opacity-0"
+    style={{ zIndex }}
+    onClick={onClick}
+    role="presentation"
+  />
+));
+
+const SearchPanel = React.forwardRef(({ isVisible, onClose }, ref) => (
+  <div 
+    ref={ref}
+    className="fixed top-0 right-0 h-full z-151"
+    style={{ display: 'none' }}
+    role="dialog"
+    aria-modal="true"
+    aria-hidden={!isVisible}
+  >
+    <SearchComponents onClose={onClose} />
+  </div>
+));
 
 export default Navbar;
