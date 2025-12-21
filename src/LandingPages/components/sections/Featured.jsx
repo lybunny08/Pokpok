@@ -84,6 +84,7 @@ function Featured() {
               <ProductCard
                 productId={product.id}
                 imageUrl={product.image}
+                alt={product.alt}
                 productName={product.name}
                 category={product.category}
                 className='w-full'

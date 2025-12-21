@@ -11,6 +11,7 @@ const productsData = [
   {
     id: 1,
     image: red,
+    alt:'Hair Texture Elyanne',
     name: 'Hair Texture',
     category: 'Hair',
     price: 29.99,
@@ -19,6 +20,7 @@ const productsData = [
   {
     id: 2,
     image: bleu,
+    alt:'Scalp Detox Elyanne',
     name: 'Scalp Detox',
     category: 'Body',
     price: 34.99,
@@ -27,6 +29,7 @@ const productsData = [
   {
     id: 3,
     image: grey,
+    alt:'Eye Serum Elyanne',
     name: 'Eye Serum',
     category: 'Body',
     price: 24.99,
@@ -35,6 +38,7 @@ const productsData = [
   {
     id: 4,
     image: hairhydrator,
+    alt:'Hair Hydrator Elyanne',
     name: 'Hair Hydrator',
     category: 'Hair',
     price: 44.99,
@@ -43,6 +47,7 @@ const productsData = [
   {
     id: 5,
     image: eyerepair,
+    alt:'Eye Repair Elyanne',
     name: 'Eye Repair',
     category: 'Body',
     price: 39.99,
@@ -51,6 +56,7 @@ const productsData = [
   {
     id: 6,
     image: hairserum,
+    alt:'Hair Serum Elyanne',
     name: 'Hair Serum',
     category: 'Hair',
     price: 49.99,
@@ -59,6 +65,7 @@ const productsData = [
   {
     id: 7,
     image: bodycream,
+    alt:'Body Cream Elyanne',
     name: 'Body Cream',
     category: 'Body',
     price: 27.99,
@@ -67,6 +74,7 @@ const productsData = [
   {
     id: 8,
     image: hairtreatementcream,
+    alt:'Hair Treatment Cream Elyanne',
     name: 'Hair Treatment Cream',
     category: 'Hair',
     price: 32.99,

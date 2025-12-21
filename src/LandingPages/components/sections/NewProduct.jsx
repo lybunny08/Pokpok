@@ -27,6 +27,7 @@ function NewProduct() {
         className='w-full md:w-[250px]'
         productId={product.id} // Ajout de l'ID pour la navigation
         imageUrl={product.image}
+        alt={product.alt}
         productName={product.name}
         category={product.category}
       />
