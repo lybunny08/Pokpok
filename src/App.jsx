@@ -4,10 +4,12 @@ import ProductPageInfo from './LandingPages/pages/ProductPageInfo';
 import Navbar from './LandingPages/components/Navbar';
 import Footer from './LandingPages/components/sections/Footer';
 import NotFound from './shared/layout/NotFound';
+import ScrollToTop from './shared/layout/ScrollToTop';
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className='px-[16px] md:px-[30px] pb-[20px] overflow-hidden'>
         <header>
           <Navbar />
