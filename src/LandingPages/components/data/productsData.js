@@ -22,7 +22,7 @@ const productsData = [
     image: bleu,
     alt:'Scalp Detox Elyanne',
     name: 'Scalp Detox',
-    category: 'Body',
+    category: 'Hair',
     price: 34.99,
     description: 'Scalp Detox, the all natural solution for clarifying and balancing your scalp. Our scientifically designed formula uses natural ingredients to effectively detoxify your scalp, leaving your hair refreshed and balanced. Relax and rejuvenate with Scalp Detox.'
   },
@@ -31,7 +31,7 @@ const productsData = [
     image: grey,
     alt:'Eye Serum Elyanne',
     name: 'Eye Serum',
-    category: 'Body',
+    category: 'Skin',
     price: 24.99,
     description: 'This Eye Serum effectively brightens and revives the delicate skin around the eyes. With its powerful formula and nourishing ingredients, it reduces dark circles and puffiness for a refreshed and youthful appearance. Expertly designed to restore radiance and smooth wrinkles.'
   },
@@ -49,7 +49,7 @@ const productsData = [
     image: eyerepair,
     alt:'Eye Repair Elyanne',
     name: 'Eye Repair',
-    category: 'Body',
+    category: 'Skin',
     price: 39.99,
     description: 'Revive and rejuvenate your delicate eye area with our all natural Eye Repair. This advanced formula deeply hydrates and revitalizes for a youthful, radiant appearance. Trust in our expertly crafted blend of natural ingredients for maximum benefits.'
   },

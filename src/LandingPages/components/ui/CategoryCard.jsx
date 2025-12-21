@@ -1,4 +1,3 @@
-// components/CategoryCard.jsx
 import { useState } from 'react';
 
 function CategoryCard({ name, image }) {

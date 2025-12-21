@@ -12,10 +12,8 @@
 }
 
 button {
-  display: flex;
+  /* display: flex;
   flex-direction: row;
-  align-items: center;
-  border-radius: 100px;
-  /* padding: 0.6em 1.2em; */
+  align-items: center; */
   cursor: pointer;
 }

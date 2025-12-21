@@ -1,3 +1,4 @@
+// Prends les 4 premiers produits qui se vends le mieux
 import React from 'react';
 import ProductCard from '../ui/ProductCard';
 import productsData from '../data/productsData';

@@ -76,7 +76,7 @@ function Featured() {
           style={{ transform: translateX }}
         >
           {duplicatedProducts.map((product, index) => ( // <-- Utilisez duplicatedProducts ici
-            <div 
+            <div
               key={`${product.id}-${index}`}
               className="flex-shrink-0"
               style={{ width: `${100 / itemsPerView}%` }}

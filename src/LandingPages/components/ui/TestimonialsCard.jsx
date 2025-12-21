@@ -40,14 +40,14 @@ function TestimonialsCard() {
             </div>
           </div>
 
-          {/* Témoignage */}
+          {/* Témoignage des clients */}
           <div className="flex-grow mb-6">
             <p className="text-sm text-gray-700 leading-relaxed italic">
               "{testimonial.text}"
             </p>
           </div>
 
-          {/* Produit associé */}
+          {/* Produit associé auxquelles le clients témoigne */}
           <div className="flex items-center gap-3 pt-4 border-t border-gray-100 group-hover:border-gray-200 transition-colors">
             <div className="h-12 w-10 bg-gradient-to-br from-gray-100 to-gray-200 rounded-md flex items-center justify-center">
               <span className="text-[10px] font-medium text-gray-600">

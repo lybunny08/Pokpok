@@ -3,7 +3,7 @@ import Skin from '../../../assets/skin.jpg';
 import Hair from '../../../assets/hair.webp';
 import Body from '../../../assets/body.webp';
 
-// 1. Définir les données des catégories
+// Définir les données des catégories de produits
 const categories = [
   {
     name: 'Body',
@@ -19,7 +19,6 @@ const categories = [
   },
 ];
 
-// 2. Le composant principal utilise les données et le composant réutilisable
 function CategorySection() {
   return (
     <section className='flex flex-col gap-[24px]'>
