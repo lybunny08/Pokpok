@@ -54,11 +54,11 @@ const INFO_ITEMS = [
 // Composant principal
 function Information() {
   return (
-    <div className='grid grid-cols-2 gap-[40px] md:flex md:flex-row md:gap-[80px] justify-center items-center'>
+    <section className='grid grid-cols-2 gap-[40px] md:flex md:flex-row md:gap-[80px] justify-center items-center'>
       {INFO_ITEMS.map((item) => (
         <InfoItem key={item.id} icon={item.icon} text={item.text} />
       ))}
-    </div>
+    </section>
   );
 }
 

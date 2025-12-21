@@ -2,7 +2,7 @@ import Herobg from '../../../assets/herobg1.png'
 import ButtonComponents from '../ui/ButtonComponents';
 function Hero() {
 	return (
-		<div
+		<section
 			className='flex bg-black h-screen mx-[-30px] px-[30px] relative text-white'
 			style={{
 				backgroundImage: `url(${Herobg})`,
@@ -26,7 +26,7 @@ function Hero() {
 					<ButtonComponents text="Shop now" />
 				</div>
 			</div>
-		</div>
+		</section>
 	);
 }
 

@@ -3,6 +3,7 @@ import Home from './LandingPages/pages/Home'
 import ProductPageInfo from './LandingPages/pages/ProductPageInfo';
 import Navbar from './LandingPages/components/Navbar';
 import Footer from './LandingPages/components/sections/Footer';
+import NotFound from './shared/layout/NotFound';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/product/:id" element={<ProductPageInfo />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <footer>

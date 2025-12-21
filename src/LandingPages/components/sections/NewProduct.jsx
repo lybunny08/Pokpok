@@ -12,7 +12,7 @@ function NewProduct() {
   }
 
   return (
-    <div className='flex flex-col md:flex-row md:ml-[-45px] gap-[40px] md:gap-[100px] items-center'>
+    <section className='flex flex-col md:flex-row md:ml-[-45px] gap-[40px] md:gap-[100px] items-center'>
       <div 
         className='w-[650px] h-[340px] md:h-[500px] bg-[#bababa] rounded-lg'
         style={{
@@ -30,7 +30,7 @@ function NewProduct() {
         productName={product.name}
         category={product.category}
       />
-    </div>
+    </section>
   );
 }
 

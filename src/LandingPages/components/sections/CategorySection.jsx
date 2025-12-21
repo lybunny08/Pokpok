@@ -22,7 +22,7 @@ const categories = [
 // 2. Le composant principal utilise les données et le composant réutilisable
 function CategorySection() {
   return (
-    <div className='flex flex-col gap-[24px]'>
+    <section className='flex flex-col gap-[24px]'>
       <h4 className='text-[24px] font-semibold'>Shop by Category</h4>
       <div className='grid grid-cols-1 md:grid-cols-3 gap-[16px]'>
         {categories.map((category) => (
@@ -33,7 +33,7 @@ function CategorySection() {
           />
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 

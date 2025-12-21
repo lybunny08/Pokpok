@@ -3,10 +3,10 @@ import TestimonialsCard from '../ui/TestimonialsCard';
 
 function Testimonials() {
     return (
-      <div className='flex flex-col gap-[80px] justify-center items-center'>
+      <section className='flex flex-col gap-[80px] justify-center items-center'>
         <span className='text-[32px] font-medium'>Testimonials</span>
         <TestimonialsCard />
-      </div>
+      </section>
     );
 }
 

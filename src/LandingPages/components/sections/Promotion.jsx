@@ -4,7 +4,7 @@ import ButtonComponents from '../ui/ButtonComponents';
 
 function Promotion() {
   return (
-    <div className="relative w-full h-[80vh] rounded-lg overflow-hidden md:mb-[40px]">
+    <section className="relative w-full h-[80vh] rounded-lg overflow-hidden md:mb-[40px]">
       {/* Image de fond */}
       <div
         className="absolute inset-0 w-full h-full"
@@ -37,7 +37,7 @@ function Promotion() {
           </span>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

@@ -7,7 +7,7 @@ function Products() {
   const displayedProducts = productsData.slice(0, 4);
 
   return (
-    <div className='flex flex-col gap-[24px]'>
+    <section className='flex flex-col gap-[24px]'>
       <div className='flex flex-row justify-between items-end'>
         <h2 className='text-[24px] font-medium'>Bestseller</h2>
         <span className='text-gray-600 hover:text-black cursor-pointer transition-colors'>
@@ -26,7 +26,7 @@ function Products() {
           />
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 

@@ -31,12 +31,12 @@
     color: #f5f5f5
 }
 
-.nav-item-underline {
+.link-item-underline {
   position: relative;
   display: inline-block;
 }
 
-.nav-item-underline::after {
+.link-item-underline::after {
   content: '';
   position: absolute;
   bottom: -2px;
@@ -49,12 +49,12 @@
   transition: transform 0.4s ease;
 }
 
-.nav-item-underline:hover::after {
+.link-item-underline:hover::after {
   transform: scaleX(1);
   transform-origin: left;
 }
 
-.nav-item-underline::after {
+.link-item-underline::after {
   transform-origin: right;
 }
 

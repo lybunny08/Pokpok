@@ -198,13 +198,13 @@ function Navbar() {
               {/* Liens avec dropdown */}
               <a
                 onMouseEnter={() => handleNavItemHover('products')}
-                className={`cursor-pointer nav-item-underline ${activeNav === 'products' ? 'text-black' : textColor}`}
+                className={`cursor-pointer link-item-underline ${activeNav === 'products' ? 'text-black' : textColor}`}
               >
                 Products
               </a>
               <a
                 onMouseEnter={() => handleNavItemHover('about')}
-                className={`cursor-pointer nav-item-underline ${activeNav === 'about' ? 'text-black' : textColor}`}
+                className={`cursor-pointer link-item-underline ${activeNav === 'about' ? 'text-black' : textColor}`}
               >
                 About
               </a>
@@ -212,33 +212,33 @@ function Navbar() {
               {/* Liens SANS dropdown */}
               <a 
                 onMouseEnter={() => handleNavItemHover('gallery')}
-                className={`cursor-pointer nav-item-underline ${textColor}`}
+                className={`cursor-pointer link-item-underline ${textColor}`}
               >
                 Gallery
               </a>
               <a 
                 onMouseEnter={() => handleNavItemHover('journal')}
-                className={`cursor-pointer nav-item-underline ${textColor}`}
+                className={`cursor-pointer link-item-underline ${textColor}`}
               >
                 Journal
               </a>
               <a 
                 onMouseEnter={() => handleNavItemHover('faq')}
-                className={`cursor-pointer nav-item-underline ${textColor}`}
+                className={`cursor-pointer link-item-underline ${textColor}`}
               >
                 FAQ
               </a>
             </div>
             <div className="flex flex-row gap-[24px]">
               <p 
-                className={`cursor-pointer nav-item-underline ${textColor}`}
+                className={`cursor-pointer link-item-underline ${textColor}`}
                 onClick={handleSearchClick}
               >
                 Search
               </p>
-              <p className={`cursor-pointer nav-item-underline ${textColor}`}>Favorites</p>
-              <p className={`cursor-pointer nav-item-underline ${textColor}`}>Account</p>
-              <p className={`cursor-pointer nav-item-underline ${textColor}`}>Bag (0)</p>
+              <p className={`cursor-pointer link-item-underline ${textColor}`}>Favorites</p>
+              <p className={`cursor-pointer link-item-underline ${textColor}`}>Account</p>
+              <p className={`cursor-pointer link-item-underline ${textColor}`}>Bag (0)</p>
             </div>
           </div>
         </div>

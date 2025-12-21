@@ -43,7 +43,7 @@ function Featured() {
   const translateX = `translateX(-${currentIndex * (100 / itemsPerView)}%)`;
 
   return (
-    <div className='flex flex-col gap-[24px]'>
+    <section className='flex flex-col gap-[24px]'>
       <div className='flex flex-row justify-between items-end'>
         <h2 className='text-[24px] font-medium'>Featured</h2>
         <div className='flex flex-row gap-[8px]'>
@@ -92,7 +92,7 @@ function Featured() {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

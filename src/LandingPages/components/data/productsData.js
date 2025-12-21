@@ -1,12 +1,17 @@
 import red from '../../../assets/products/red.png';
 import bleu from '../../../assets/products/blue.png';
 import grey from '../../../assets/products/grey.png';
+import eyerepair from '../../../assets/products/eyerepair.avif';
+import hairhydrator from '../../../assets/products/hairhydrator.avif';
+import hairserum from '../../../assets/products/hairserum.avif';
+import hairtreatementcream from '../../../assets/products/hairtreatementcream.avif';
+import bodycream from '../../../assets/products/bodycream.webp';
 
 const productsData = [
   {
     id: 1,
     image: red,
-    name: 'Hair hydrator',
+    name: 'Hair Texture',
     category: 'Hair',
     price: 29.99,
     description: 'This Hair Oil is expertly crafted to deeply hydrate and repair damaged hair. With its powerful formula, this oil nourishes each strand, leaving hair healthier and more manageable. Experience the benefits of shiny, smooth, and nourished hair with this Hair Oil.'
@@ -14,58 +19,58 @@ const productsData = [
   {
     id: 2,
     image: bleu,
-    name: 'Eye Serum',
+    name: 'Scalp Detox',
     category: 'Body',
     price: 34.99,
-    description: 'Sérum contour des yeux'
+    description: 'Scalp Detox, the all natural solution for clarifying and balancing your scalp. Our scientifically designed formula uses natural ingredients to effectively detoxify your scalp, leaving your hair refreshed and balanced. Relax and rejuvenate with Scalp Detox.'
   },
   {
     id: 3,
     image: grey,
-    name: 'Face Toner',
-    category: 'Skin',
+    name: 'Eye Serum',
+    category: 'Body',
     price: 24.99,
-    description: 'Tonifiant pour le visage'
+    description: 'This Eye Serum effectively brightens and revives the delicate skin around the eyes. With its powerful formula and nourishing ingredients, it reduces dark circles and puffiness for a refreshed and youthful appearance. Expertly designed to restore radiance and smooth wrinkles.'
   },
   {
     id: 4,
-    image: '/assets/products/blue.png',
-    name: 'Eye Repair',
-    category: 'Body',
-    price: 39.99,
-    description: 'Crème réparatrice pour les yeux'
+    image: hairhydrator,
+    name: 'Hair Hydrator',
+    category: 'Hair',
+    price: 44.99,
+    description: 'Introducing our Elyanne Hair Hydrator - expertly crafted with nourishing ingredients to provide deep hydration to your hair. With no harmful chemicals, your hair will feel healthy, soft, and revitalized. Experience the power of nature with our Hair Hydrator.'
   },
   {
     id: 5,
-    image: '/assets/products/blue.png',
-    name: 'Eye Repair 2',
+    image: eyerepair,
+    name: 'Eye Repair',
     category: 'Body',
-    price: 44.99,
-    description: 'Sérum yeux avancé'
+    price: 39.99,
+    description: 'Revive and rejuvenate your delicate eye area with our all natural Eye Repair. This advanced formula deeply hydrates and revitalizes for a youthful, radiant appearance. Trust in our expertly crafted blend of natural ingredients for maximum benefits.'
   },
   {
     id: 6,
-    image: '/assets/products/blue.png',
-    name: 'Eye Repair 3',
-    category: 'Body',
+    image: hairserum,
+    name: 'Hair Serum',
+    category: 'Hair',
     price: 49.99,
-    description: 'Gel yeux premium'
+    description: 'This Hair Serum is scientifically formulated to strengthen and add shine to your hair. With its unique blend of ingredients, it nourishes and protects your hair, leaving it looking healthy and lustrous. Say goodbye to dull and weak hair with this professional-grade serum.'
   },
   {
     id: 7,
-    image: '/assets/products/red.png',
-    name: 'Hair Mask',
-    category: 'Hair',
+    image: bodycream,
+    name: 'Body Cream',
+    category: 'Body',
     price: 27.99,
-    description: 'Masque capillaire nourrissant'
+    description: 'A rich, deeply moisturizing body cream that hydrates and nourishes your skin. Infused with skin-loving ingredients, it restores softness and elasticity, leaving your skin silky-smooth and replenished.'
   },
   {
     id: 8,
-    image: '/assets/products/grey.png',
-    name: 'Face Cream',
-    category: 'Skin',
+    image: hairtreatementcream,
+    name: 'Hair Treatment Cream',
+    category: 'Hair',
     price: 32.99,
-    description: 'Crème visage hydratante'
+    description: 'Our Elyanne Hair Treatment Cream, expertly formulated to strengthen and repair damaged hair. With our professional blend of nourishing ingredients, this cream will leave your hair looking and feeling healthier. Say goodbye to weak and damaged hair, and hello to strong, beautiful locks.'
   }
 ];
 
