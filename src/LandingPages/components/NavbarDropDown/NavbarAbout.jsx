@@ -1,5 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import environment from '../../../assets/about/Environment.png'
+import ingredient from '../../../assets/about/Ingredient.png'
+import values from '../../../assets/about/Values.png'
+import company from '../../../assets/about/Company.webp'
 
 function NavBarAbout() {
   const containerRef = useRef(null);
@@ -32,20 +36,25 @@ function NavBarAbout() {
   }, []);
 
   return (
-    <div ref={containerRef} className='grid grid-cols-5 gap-[8px]'>
+    <div ref={containerRef} className='grid grid-cols-4 gap-[8px]'>
       {[
-        { title: "Notre histoire" },
-        { title: "Manifesto" },
-        { title: "Nos valeurs" },
-        { title: "Nos fondatrices" },
-        { title: "Nos addresses" },
+        { title: "Company" , image: company },
+        { title: "Values" , image: values },
+        { title: "Ingredients" , image: ingredient},
+        { title: "Environment" , image: environment },
       ].map((item, index) => (
         <div
           key={index}
           ref={el => itemsRef.current[index] = el}
           className='flex flex-col gap-[8px] cursor-pointer group opacity-0' // Initial hidden
         >
-          <div className='w-full h-[240px] rounded-lg bg-black/40'></div>
+          <div className='w-full h-[240px] rounded-lg'
+          style={{
+            backgroundImage: `url(${item.image}) `,
+            backgroundPosition:'center',
+            backgroundSize: 'cover',
+            backgroundRepeat : 'no-repeat'
+          }}></div>
           <p className='text-black text-[14px] font-medium '>
             {item.title}
           </p>
