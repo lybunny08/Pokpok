@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductCard from '../ui/ProductCard';
+import ProductCard from '../product/ProductCard';
 import productsData from '../data/productsData'; // Import depuis le fichier centralisé
 import hairnews from '../../../assets/Hairnews.png';
 

@@ -10,7 +10,7 @@ function NotFound() {
     };
 
     return (
-        <div className='flex flex-col justify-center items-center gap-[8px] pt-[100px] '>
+        <div className='flex flex-col justify-center items-center gap-[8px] pt-[150px] '>
             <span className='text-[40px] font-medium '>Oops! You're lost.</span>
             <span>The page you are looking for was not found or relocated.</span>
             <ButtonComponents 

@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './LandingPages/pages/Home'
+import HomePage from './LandingPages/pages/HomePage'
 import ProductPageInfo from './LandingPages/pages/ProductPageInfo';
 import Navbar from './LandingPages/components/Navbar';
 import Footer from './LandingPages/components/sections/Footer';
@@ -16,7 +16,7 @@ function App() {
         </header>
         <main>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/product/:id" element={<ProductPageInfo />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

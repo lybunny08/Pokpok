@@ -7,7 +7,7 @@ import NewProduct from "../components/sections/NewProduct";
 import Featured from "../components/sections/Featured";
 import Information from "../components/sections/Information";
 import Promotion from "../components/sections/Promotion";
-function Home() {
+function HomePage() {
 	return (
 		<div className="flex flex-col gap-[60px] md:gap-[90px] ">
 			<Hero />
@@ -23,4 +23,4 @@ function Home() {
 	);
 }
 
-export default Home;
+export default HomePage;

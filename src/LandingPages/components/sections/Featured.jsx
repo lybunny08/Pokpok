@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ProductCard from '../ui/ProductCard';
+import ProductCard from '../product/ProductCard';
 import productsData from '../data/productsData';
 
 function Featured() {
